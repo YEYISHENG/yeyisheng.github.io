@@ -16,26 +16,24 @@
   <meta name="author" content="叶逸昇">
   <meta name="keywords" content="">
   
-    <meta name="description" content="在将添加的两篇测试文章“text”、“text2”删除后，重新生成并部署网站后，发现文章依旧在网站端页面显示，我就意识到了事情的不简单。之所以添加这两篇测试文章，是因为我发现我新提交的文章“构建笔记系统”无法在页面显示，于是我就重新提交了两篇测试文章，发现每新提交一篇文章，网页上就会显示上一次提交的文章，这让我很疑惑。我首先留意到了这样一段warning:  1warning: in the wo">
+    <meta name="description" content="引子今天在分析车道保持的训练数据时，想着之前也用过matlab分析过硅电池效率，这次也想着弄个图出来。一看log文件是csv格式，又懒得转成xlsx格式（虽然也就是两三步的事，但我今天还就和它杠上了，我非要用这个csv格式的文件）。之前分析硅电池的时候，用的是xlsread命令导入xlsx文件，现在是csv文件，我先是想到了load命令，后来又再网上搜到了类似的csvread命令和一个我之前没遇到">
 <meta property="og:type" content="article">
-<meta property="og:title" content="记录今日破防">
-<meta property="og:url" content="http://example.com/2022/12/07/%E8%AE%B0%E5%BD%95%E4%BB%8A%E6%97%A5%E7%A0%B4%E9%98%B2/index.html">
+<meta property="og:title" content="一文弄懂MATLAB数据导入">
+<meta property="og:url" content="http://example.com/2022/12/12/%E4%B8%80%E6%96%87%E5%BC%84%E6%87%82MATLAB%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
-<meta property="og:description" content="在将添加的两篇测试文章“text”、“text2”删除后，重新生成并部署网站后，发现文章依旧在网站端页面显示，我就意识到了事情的不简单。之所以添加这两篇测试文章，是因为我发现我新提交的文章“构建笔记系统”无法在页面显示，于是我就重新提交了两篇测试文章，发现每新提交一篇文章，网页上就会显示上一次提交的文章，这让我很疑惑。我首先留意到了这样一段warning:  1warning: in the wo">
+<meta property="og:description" content="引子今天在分析车道保持的训练数据时，想着之前也用过matlab分析过硅电池效率，这次也想着弄个图出来。一看log文件是csv格式，又懒得转成xlsx格式（虽然也就是两三步的事，但我今天还就和它杠上了，我非要用这个csv格式的文件）。之前分析硅电池的时候，用的是xlsread命令导入xlsx文件，现在是csv文件，我先是想到了load命令，后来又再网上搜到了类似的csvread命令和一个我之前没遇到">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/wangye.png">
-<meta property="article:published_time" content="2022-12-07T05:52:45.000Z">
-<meta property="article:modified_time" content="2022-12-07T15:30:15.019Z">
+<meta property="article:published_time" content="2022-12-12T15:17:42.000Z">
+<meta property="article:modified_time" content="2022-12-12T15:18:46.712Z">
 <meta property="article:author" content="叶逸昇">
-<meta property="article:tag" content="网页部署">
+<meta property="article:tag" content="MATLAB">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/wangye.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>记录今日破防 - YeYisheng&#39;s Blog</title>
+  <title>一文弄懂MATLAB数据导入 - YeYisheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/wangye.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/over.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="记录今日破防"></span>
+            <span id="subtitle" data-typed-text="一文弄懂MATLAB数据导入"></span>
           
         </div>
 
@@ -216,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-12-07 13:52" pubdate>
-          2022年12月7日 下午
+        <time datetime="2022-12-12 23:17" pubdate>
+          2022年12月12日 晚上
         </time>
       </span>
     
@@ -228,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          876 字
+          1.7k 字
         
       </span>
     
@@ -239,7 +237,7 @@
         
         
         
-          8 分钟
+          15 分钟
         
       </span>
     
@@ -285,12 +283,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">记录今日破防</h1>
+            <h1 style="display: none">一文弄懂MATLAB数据导入</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2022年12月7日 晚上
+                    本文最后更新于：2022年12月12日 晚上
                   
                 
               </p>
@@ -298,18 +296,24 @@
             
               <div class="markdown-body">
                 
-                <p>在将添加的两篇测试文章“text”、“text2”删除后，重新生成并部署网站后，发现文章依旧在网站端页面显示，我就意识到了事情的不简单。<br>之所以添加这两篇测试文章，是因为我发现我新提交的文章“构建笔记系统”无法在页面显示，于是我就重新提交了两篇测试文章，发现每新提交一篇文章，网页上就会显示上一次提交的文章，这让我很疑惑。<br><img src="/img/article/art3/p1.png" srcset="/img/loading2.gif" lazyload alt="pic1"><br><img src="/img/article/art3/p2.png" srcset="/img/loading2.gif" lazyload alt="pic2"><br>我首先留意到了这样一段warning: <br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">warning: <span class="hljs-keyword">in</span> the working copy of <span class="hljs-string">&#x27;archives/2022/12/index.html&#x27;</span>, LF will be replaced by CRLF the next time Git touches it<br></code></pre></td></tr></table></figure>
-
-<p>在google后了解到，这是由于在跨平台操作下CR(CarriageReturn：回车，\r)与LF(LineFeed：换行，\n)可能会产生冲突。详参考博文<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012757419/article/details/105614028">git提示“warning: LF will be replaced by CRLF”的解决办法_青崖林夕的博客-CSDN博客</a>，此处不再赘述。由于我日常主力还是在Windows上进行，还是默认设置Git在提交时自动把回车（CR）和换行（LF）转换成换行（LF）。使用命令: <br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#提交时转换为LF，检出时不转换</span><br>$ git config --global core.autocrlf <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<p>但我在提交新文章的时候仍然会产生这个warning，，， <br><br>然后我又输入了这样一条命令： <br></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#提交时转换为LF，检出时不转换</span><br>$ git config core.autocrlf<br><span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<p>再提交就不报warning了，很玄啊，<del>感觉在玩一种很新的东西</del><br><br>解决了这个warning，我闲着无事又刷新了网页，发现博客界面恢复正常了,给我整无语了。<br><br><img src="/img/article/art3/p3.png" srcset="/img/loading2.gif" lazyload alt="pic3"></p>
-<p>原来是从部署后到直接在页面显示出结果会有一定的延时，稍微等待一会就OK了，焯！建议大家以后提交博客后不要着急使用<code>hexo d</code>部署网站，先使用<code>hexo s</code>启用服务预览看一看页面是否正常后再部署，然后稍微<strong>耐心等待</strong>一会。<br><br>好了，折腾了将近两个小时，整了这么一出闹剧，下午还得复习复习半导体器件，估计明天就期中考试了。<br><br>啥都不会，救，，，</p>
-
+                <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>今天在分析车道保持的训练数据时，想着之前也用过matlab分析过硅电池效率，这次也想着弄个图出来。一看log文件是csv格式，又懒得转成xlsx格式（虽然也就是两三步的事，但我今天还就和它杠上了，我非要用这个csv格式的文件）。<br>之前分析硅电池的时候，用的是<code>xlsread</code>命令导入xlsx文件，现在是csv文件，我先是想到了<code>load</code>命令，后来又再网上搜到了类似的<code>csvread</code>命令和一个我之前没遇到过的<code>importdata</code>命令。索性这次就好好捋一捋不同导入函数之间的爱恨情仇。 <br></p>
+<h3 id="xlsread命令"><a href="#xlsread命令" class="headerlink" title="xlsread命令"></a><code>xlsread</code>命令</h3><p>将文件变量导入到工作区中，一般<strong>针对电子表格</strong>文件</p>
+<h3 id="csvread命令"><a href="#csvread命令" class="headerlink" title="csvread命令"></a><code>csvread</code>命令</h3><h3 id="imread"><a href="#imread" class="headerlink" title="imread"></a><code>imread</code></h3><p>将文件变量导入到工作区中，一般<strong>针对图像</strong>文件</p>
+<h3 id="96-audioread"><a href="#96-audioread" class="headerlink" title="&#96;audioread"></a>&#96;audioread</h3><p>将文件变量导入到工作区中，一般<strong>针对音频</strong>文件</p>
+<h3 id="load命令"><a href="#load命令" class="headerlink" title="load命令"></a><code>load</code>命令</h3><p>将文件变量导入到工作区中，一般<strong>针对matlab特有的格式文件</strong>，即 .mat文件。使用命令： <br></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs matlab">load(filename)       <span class="hljs-comment">%filename可以是.mat文件，也可以是ASCII文件（也叫文本文件即.txt文件）</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>注：ASCII文件指含有用标准ASCII字符集编码的字符的数据和文本文件，只含有字母、数字和常见的符号。这种文件在磁盘中存放时每个字符对应一个8bits的字节，用于存放对应的ASCII码。区别于按二进制的编码方式来存放文件的二进制文件。</p>
+</blockquote>
+<h3 id="importdata命令"><a href="#importdata命令" class="headerlink" title="importdata命令"></a><code>importdata</code>命令</h3><p>将数据导入到工作区中，可以导入各种类型的数据（如图片数据、数字、字符串等）、系统剪切板的数据等，函数的输入参数<code>delimiterIn</code>、<code>headerlinesIn</code>表示文件中的数据分隔符、以及我想从哪一行数据开始导入。 <br><br>附[mathworks官方importdata说明文档] (<a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/ref/importdata.html#btldf1f-1">https://ww2.mathworks.cn/help/matlab/ref/importdata.html#btldf1f-1</a>) <br></p>
+<h4 id="importdata-filename-delimiterIn-headerlinesIn"><a href="#importdata-filename-delimiterIn-headerlinesIn" class="headerlink" title="importdata(filename,delimiterIn,headerlinesIn)"></a>importdata(filename,delimiterIn,headerlinesIn)</h4><p>说人话：使用参数<code>delimiterIn</code>告诉matlab我们文件中的数据分隔符是什么。使用参数<code>headerlinesIn</code>告诉matlab我想从哪里开始导入数据。如： <br><br>我们使用文本编辑器创建一个带有列标题的称为 myfile01.txt 的空格分隔 ASCII 文件。 <br></p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs text">Day1  Day2  Day3  Day4  Day5  Day6  Day7<br>95.01 76.21 61.54 40.57  5.79 20.28  1.53<br>23.11 45.65 79.19 93.55 35.29 19.87 74.68<br>60.68  1.85 92.18 91.69 81.32 60.38 44.51<br>48.60 82.14 73.82 41.03  0.99 27.22 93.18<br>89.13 44.47 17.63 89.36 13.89 19.88 46.60<br></code></pre></td></tr></table></figure>
+<p>输入以下命令： <br></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs matlab">filename = <span class="hljs-string">&#x27;myfile01.txt&#x27;</span>;<br>delimiterIn = <span class="hljs-string">&#x27; &#x27;</span>;<br>headerlinesIn = <span class="hljs-number">1</span>;<br>A = importdata(filename,delimiterIn,headerlinesIn);<br><span class="hljs-comment">% 也就是A = importdata(‘myfile01.txt’, ‘ ’, 1);</span><br><span class="hljs-comment">% 注意，第二个单引号内存在一个空格</span><br></code></pre></td></tr></table></figure>
+<p>上面的命令告诉我们，我们要导入一个叫做’myfile01.txt’的文本文件，它是以空格作为分隔符，并且我们导入从<strong>headerlinesIn +1</strong>&#x3D;2行开始的<strong>数值数据</strong>。 <br><br>获得一个结构体输出：<br></p>
+<p>导出了从第headerlinesIn +1即第二行开始的数值数据作为struct中的data，第headerlinesIn行作为colheaders，第一行到第headerlinesIn行的数据作为textdata。在缺省headerlinesIn参数的情况下importdata 函数将会在文件中检测该值。 <br></p>
+<h4 id="A-delimiterOut-headerlinesOut-x3D-importdata"><a href="#A-delimiterOut-headerlinesOut-x3D-importdata" class="headerlink" title="[A,delimiterOut,headerlinesOut] &#x3D; importdata(___)"></a>[A,delimiterOut,headerlinesOut] &#x3D; importdata(___)</h4><p>在<code>delimiterOut</code>中额外返回检测到的输入 ASCII 文件中的分隔符，以及在<code>headerlinesOut</code>中返回检测到的标题行数。 <br></p>
+<h3 id="uiimport"><a href="#uiimport" class="headerlink" title="uiimport"></a><code>uiimport</code></h3>
                 
               </div>
             
@@ -321,7 +325,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2/">#网页部署</a>
+        <a href="/tags/MATLAB/">#MATLAB</a>
       
     </div>
   
@@ -333,8 +337,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>记录今日破防</div>
-      <div>http://example.com/2022/12/07/记录今日破防/</div>
+      <div>一文弄懂MATLAB数据导入</div>
+      <div>http://example.com/2022/12/12/一文弄懂MATLAB数据导入/</div>
     </div>
     <div class="license-meta">
       
@@ -346,7 +350,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年12月7日</div>
+          <div>2022年12月12日</div>
         </div>
       
       
@@ -378,18 +382,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/12/12/%E4%B8%80%E6%96%87%E5%BC%84%E6%87%82MATLAB%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5/" title="一文弄懂MATLAB数据导入">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">一文弄懂MATLAB数据导入</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/12/06/%E6%9E%84%E5%BB%BA%E7%AC%94%E8%AE%B0%E7%B3%BB%E7%BB%9F/" title="构建笔记系统">
-                        <span class="hidden-mobile">构建笔记系统</span>
+                      <a href="/2022/12/07/%E8%AE%B0%E5%BD%95%E4%BB%8A%E6%97%A5%E7%A0%B4%E9%98%B2/" title="记录今日破防">
+                        <span class="hidden-mobile">记录今日破防</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
