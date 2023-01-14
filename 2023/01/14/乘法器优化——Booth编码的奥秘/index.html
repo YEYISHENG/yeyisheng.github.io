@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art5/6.png">
 <meta property="article:published_time" content="2023-01-14T05:55:49.000Z">
-<meta property="article:modified_time" content="2023-01-14T09:45:58.043Z">
+<meta property="article:modified_time" content="2023-01-14T10:58:07.718Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="乘法器优化">
 <meta property="article:tag" content="Booth编码">
@@ -291,7 +291,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2023年1月14日 下午
+                    本文最后更新于：2023年1月14日 晚上
                   
                 
               </p>
@@ -308,7 +308,7 @@
 <p><img src="/img/article/art5/1.png" srcset="/img/loading2.gif" lazyload alt="图 1 二进制阵列乘法器"></p>
 <p>本文主要在查阅有关资料的基础上，整理了<strong>布斯编码</strong>（Booth Encoding一种用来减少部分积数目的算法）与在此基础上提出的<strong>改进布斯编码</strong>（modified Booth’s encoding）的相关知识，并结合自己的理解，使用通俗易懂的语言进行阐述。 <br></p>
 <h2 id="Booth编码"><a href="#Booth编码" class="headerlink" title="Booth编码"></a>Booth编码</h2><h3 id="Wikipedia定义"><a href="#Wikipedia定义" class="headerlink" title="Wikipedia定义"></a>Wikipedia定义</h3><p>布斯编码可以减少部分积的数目，用来计算有符号乘法，提高乘法运算的速度。对于Booth编码，维基百科是这么说的：<br><br><img src="/img/article/art5/2.png" srcset="/img/loading2.gif" lazyload alt="图 2 Wikipedia定义"><br>这段详解已经胜过国内大多数教材的介绍，但相信这一大串数学符号也会劝退很多人，本文的目的就是通俗易懂，让小白也能看懂Booth编码。所以我又查阅资料，重新进行整理。 <br><br>锵！且听我娓娓道来~ <br></p>
-<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>我们知道，乘法计算本质上就是加法运算，但当乘数中二进制1数量过多时，会出现大量繁杂的加法运算，而二进制0的存在可以降低运算次数，因为0和任何数相乘都为0，我们就无需再进行计算，就像下图中这样： <br><br><img src="/img/article/art5/3.png" srcset="/img/loading2.gif" lazyload alt="图 3 简单乘法操作"><br><img src="/img/article/art5/4.png" srcset="/img/loading2.gif" lazyload alt="图 4 繁杂乘法操作"><br>可以看出，相较于图二，图一中的计算由于乘数中0的个数较多，使得计算大大简化。 <br><br>那么问题来了，是否存在这样一种编码方式，能够大大缩减乘数中二进制1的个数，进而简化运算？答案是肯定的，也就是我们将要介绍的Booth编码。 <br><br>其实早在小学时代，我们就学过这样的简便运算： <br></p>
+<h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>我们知道，乘法计算本质上就是加法运算，但当乘数中二进制1数量过多时，会出现大量繁杂的加法运算，而二进制0的存在可以降低运算次数，因为0和任何数相乘都为0，我们就无需再进行计算，就像下图中这样： <br><br><img src="/img/article/art5/3.png" srcset="/img/loading2.gif" lazyload alt="图 3 简单乘法操作"><br><img src="/img/article/art5/4.png" srcset="/img/loading2.gif" lazyload alt="图 4 繁杂乘法操作"><br>可以看出，相较于图4，图3中的计算由于乘数中0的个数较多，使得计算大大简化。 <br><br>那么问题来了，是否存在这样一种编码方式，能够大大缩减乘数中二进制1的个数，进而简化运算？答案是肯定的，也就是我们将要介绍的Booth编码。 <br><br>其实早在小学时代，我们就学过这样的简便运算： <br></p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">9x99=9x(100-1)=900-9=891<br></code></pre></td></tr></table></figure>
 <p>将乘数“99”化为“100-1”，计算更为简单。类似的，在二进制补码乘法X<em>Y中，我们也可以采取相同的操作。对于乘数: <br><br>$Y&#x3D;[0111_1110]_补&#x3D;2^6+2^5+2^4+2^3+2^2+2^1$ <br><br>我们采用另外一种相对简单的表示方式： <br><br>$[0111_1110]_补&#x3D;[1000_0000]_补-[0000_0010]_补，将其记为[1000_00\overline10]（这里的\overline1是-1的缩写符号）$ <br><br>此时X</em>Y可以表示为： <br><br>$X<em>Y&#x3D;X</em>[0111_1110]_补&#x3D;X*([1000_0000]_补-[0000_0010]_补)&#x3D;X*[1000_0000]_补-X*[0000_0010]_补$ <br><br>采用这一形式，我们只需相加两个部分积（但这要求最终设计的加法器必须也能执行减法，否则需将减法-[0000_0010]补转换成补码加法+[1111_1110]补，这又会产生七个部分积，得不偿失）。这种形式的变换称为布斯编码（Booth Encode），它使部分积的数目至少可以缩减到原来的一半。部分积的减少意味着相加次数的减少，从而加快了运算速度并减少了面积。 <br></p>
 <h3 id="补码一位乘法"><a href="#补码一位乘法" class="headerlink" title="补码一位乘法"></a>补码一位乘法</h3><p>下面先简要阐述Booth算法的基本流程： <br><br>设$[X]_补&#x3D;x_s·x_1·x_2···x_n,[Y]_补&#x3D;y_s·y_1·y_2···y_n$，其中$x_s,y_s$均为符号位将符号位参与计算，运算数以补码表示且被乘数与部分积都取双符号位。 <br></p>
@@ -347,10 +347,8 @@
     </tr>
 </tbody>
 </table>
-下面给出一个示例： <br>
-设机器字长为5位，其中一位是符号位。且$[X]_补=1.0101 [Y]_补=1.0011$ <br>
-[!Booth乘法操作](/img/article/art5/5.png)
 
+<p>下面给出一个示例： <br><br>设机器字长为5位，其中一位是符号位。且：$[X]_补&#x3D;1.0101,[Y]_补&#x3D;1.0011$ <br><br><img src="/img/article/art5/5.png" srcset="/img/loading2.gif" lazyload alt="图 5 Booth乘法操作"></p>
 <h3 id="数学推导"><a href="#数学推导" class="headerlink" title="数学推导"></a>数学推导</h3><p>对于只想浅探Booth编码的定义及工作原理的朋友，上述内容已足够清晰明了。但考虑到严谨性与实际应用，该部分给出部分数学上的推导以及更为详尽的说明。 <br><br>前面已经提到将乘数$Y&#x3D;[0111_1110]<em>补$表示为$[1000_00\overline10]，这个转换不是一眼看出来的，怎样将其进行推广，使我们能够对任意的乘数都能进行类似的转换以化简运算呢？ <br><br>考虑有符号乘数：$Y&#x3D;[y</em>{n-1}y_{n-2}···y_1y_0]_2$ <br></p>
 <p><font color = #000000 size=2 face="宋体">$Y&#x3D;[y_{n-1}y_{n-2}···y_1y_0]<em>2$</font> <br><br><font color = #000000 size=2 face="宋体">$(1)&#x3D;-2^{n-1}·y</em>{n-1}+2^{n-2}·y_{n-2}+···+2^1·y_1+2^0·y_0+y_{-1}$</font> <br><br><font color = #339933 size=2 face="宋体">$(2)&#x3D;2^{n-1}·(y_{n-2}-y_{n-1})+2^{n-2}·(y_{n-3}-y_{n-2})+···+2^0·(y_{-1}-y_0)$</font> <br><br><font color = #ff0000 size=2 face="宋体">$(3)&#x3D;2^{n-2}·(y_{n-2}+y_{n-3}-2·y_{n-1})+2^{n-4}·(y_{n-4}+y_{n-5}-2·y_{n-3})+···+2^{0}·(y_{0}+y_{-1}-2·y_{1})$</font> <br><br><font color = #ff0000 size=2 face="宋体">$(4)&#x3D;\sum_{i&#x3D;0}^{(N-1)&#x2F;2}Y_i·4^i,(Y \in {-2,-1,0,1,2})$</font> <br></p>
 <p>定义$Y_i&#x3D;y_{i-2}-y_{i-1}$，考虑(2)式，对于二进制数$Y,y_i \in {0,1}$ ，从(2)式中可以看出： <br><br>$$<br>\left{<br>\begin{aligned}<br>if &amp; &amp; y_{i+1}&#x3D;y_i, &amp; &amp; then &amp; &amp; Y_i&#x3D;0, \<br>if &amp; &amp; y_{i+1}&gt;y_i, &amp; &amp; then &amp; &amp; Y_i&#x3D;1, \<br>if &amp; &amp; y_{i+1}&lt;y_i, &amp; &amp; then &amp; &amp; Y_i&#x3D;-1.<br>\end{aligned}<br>\right.<br>$$<br>这构成了Booth编码的部分积选择表。 <br></p>
