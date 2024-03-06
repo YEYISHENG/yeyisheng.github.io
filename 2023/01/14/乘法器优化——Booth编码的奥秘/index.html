@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art5/6.png">
 <meta property="article:published_time" content="2023-01-14T05:55:49.000Z">
-<meta property="article:modified_time" content="2024-03-06T14:26:15.686Z">
+<meta property="article:modified_time" content="2024-03-06T14:49:56.093Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="乘法器优化">
 <meta property="article:tag" content="Booth编码">
@@ -240,7 +240,7 @@
         
         
         
-          41 分钟
+          40 分钟
         
       </span>
     
@@ -436,42 +436,57 @@ if &amp; &amp; y_{i+1}&lt;y_i, &amp; &amp; then &amp; &amp; Y_i=-1.
 \end{aligned}
 \right.
 \]</span> 这构成了Booth编码的部分积选择表。 <br></p>
-<!-- <table align="center" border="2" >
+<table align="center" border="2">
 <thead>
-    <tr >
-        <th colspan="4">Booth乘法表</th>
-    </tr>
+<tr>
+<th colspan="4">
+Booth乘法表
+</th>
+</tr>
 </thead>
 <tbody>
-    <tr >
-        <td>乘数位</td>
-        <td>编码位</td>
-    </tr>
-    <tr >
-        <td>00</td>
-        <td>0</td>
-    </tr>
-    <tr >
-        <td>01</td>
-        <td>+被乘数</td>
-    </tr>
-    <tr >
-        <td>10</td>
-        <td>-被乘数</td>
-    </tr>
-    <tr >
-        <td>11</td>
-        <td>0</td>
-    </tr>
+<tr>
+<td>
+乘数位
+</td>
+<td>
+编码位
+</td>
+</tr>
+<tr>
+<td>
+00
+</td>
+<td>
+0
+</td>
+</tr>
+<tr>
+<td>
+01
+</td>
+<td>
++被乘数
+</td>
+</tr>
+<tr>
+<td>
+10
+</td>
+<td>
+-被乘数
+</td>
+</tr>
+<tr>
+<td>
+11
+</td>
+<td>
+0
+</td>
+</tr>
 </tbody>
-</table> -->
-<div class="line-block">Booth乘法表 |<br />
-:-------: || :-------: |<br />
-乘数位 | 编码位 |<br />
-00 | 0 |<br />
-01 | +被乘数 |<br />
-10 | -被乘数 |<br />
-11 | 0 |</div>
+</table>
 <p>定义<span
 class="math inline">\(Y_i=y_{i-2}+y_{i-3}-2·y_{n-1}\)</span>，考虑(3)式，对于二进制数<span
 class="math inline">\(Y,y_i \in \{0,1\}\)</span> ，从(3)式中可以看出：
