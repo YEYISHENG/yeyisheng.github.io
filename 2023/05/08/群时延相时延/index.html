@@ -16,18 +16,18 @@
   <meta name="author" content="叶逸昇">
   <meta name="keywords" content="">
   
-    <meta name="description" content="���ӣ�զ�����㣬Ⱥʱ�ӣ� �����ڿ�ͨ��ԭ��ʱ����������Ⱥʱ����������ѣ�֮ǰ�ڿ��ź���ϵͳ����Ƶ���ɵ�·����ʱ��û��ôŪ���ף�����������Ҹ������ˣ��׻�˵��һ�ٶ�������������������������������˺ܶ����ϣ��ַ�����֮ǰ�ź���ϵͳ��д���ǽ�һ��obscure��">
+    <meta name="description" content="引子：咋又是你，群时延？ 今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。  辨析：好像有个弟弟叫相时延？ 首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ⱥʱ����ʱ��">
+<meta property="og:title" content="群时延相时延">
 <meta property="og:url" content="http://example.com/2023/05/08/%E7%BE%A4%E6%97%B6%E5%BB%B6%E7%9B%B8%E6%97%B6%E5%BB%B6/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
-<meta property="og:description" content="���ӣ�զ�����㣬Ⱥʱ�ӣ� �����ڿ�ͨ��ԭ��ʱ����������Ⱥʱ����������ѣ�֮ǰ�ڿ��ź���ϵͳ����Ƶ���ɵ�·����ʱ��û��ôŪ���ף�����������Ҹ������ˣ��׻�˵��һ�ٶ�������������������������������˺ܶ����ϣ��ַ�����֮ǰ�ź���ϵͳ��д���ǽ�һ��obscure��">
+<meta property="og:description" content="引子：咋又是你，群时延？ 今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。  辨析：好像有个弟弟叫相时延？ 首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/matlab.png">
 <meta property="article:published_time" content="2023-05-08T14:54:48.000Z">
-<meta property="article:modified_time" content="2024-03-06T15:38:40.436Z">
+<meta property="article:modified_time" content="2024-03-06T15:40:52.046Z">
 <meta property="article:author" content="叶逸昇">
-<meta property="article:tag" content="�������">
+<meta property="article:tag" content="概念辨析">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/matlab.png">
   
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Ⱥʱ����ʱ�� - YeYisheng&#39;s Blog</title>
+  <title>群时延相时延 - YeYisheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Ⱥʱ����ʱ��"></span>
+            <span id="subtitle" data-typed-text="群时延相时延"></span>
           
         </div>
 
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          2k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          23 分钟
+          17 分钟
         
       </span>
     
@@ -285,7 +285,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Ⱥʱ����ʱ��</h1>
+            <h1 style="display: none">群时延相时延</h1>
             
               <p class="note note-info">
                 
@@ -298,56 +298,57 @@
             
               <div class="markdown-body">
                 
-                <h2 id="ӣզ㣬ⱥʱӣ">���ӣ�զ�����㣬Ⱥʱ�ӣ�</h2>
-<p>�����ڿ�ͨ��ԭ��ʱ����������Ⱥʱ����������ѣ�֮ǰ�ڿ��ź���ϵͳ����Ƶ���ɵ�·����ʱ��û��ôŪ���ף�����������Ҹ������ˣ��׻�˵��һ�ٶ�������������������������������˺ܶ����ϣ��ַ�����֮ǰ�ź���ϵͳ��д���ǽ�һ��obscure���ַ��˺ܴ󹦷�����ϣ�����Ū�����ˡ�
+                <h2 id="引子咋又是你群时延">引子：咋又是你，群时延？</h2>
+<p>今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。
 <br></p>
-<h2 id="иʱӣ">�����������и��ܵܽ���ʱ�ӣ�</h2>
-<p>����Ҫ��ȷ�ĸ����ǣ�ʱ�Ӵ����ĺ�����ʲô����ʱ���ϵ��ӳ١���ôʱ������λ�ָ������ϵ�ϣ����Ǻ���Ȼ�����뵽ʱ������λ֮��Ĺ�ϵ��
+<h2 id="辨析好像有个弟弟叫相时延">辨析：好像有个弟弟叫相时延？</h2>
+<p>首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时间与相位又该如何联系上？我们很自然地联想到时间与相位之间的关系：
 <br> <span class="math display">\[
-\theta = \omega��t
-\]</span> ʽ��<span
-class="math inline">\(\theta\)</span>������λ����λrad��<span
-class="math inline">\(\omega\)</span>������Ƶ�ʣ���λrad/s��t����ʱ�䣬��λs��
-���ǰ�<span
-class="math inline">\(\Delta\theta=\theta\left(t_1\right)-\theta\left(t_2\right)=\omega\left(t_1-t_2\right)\)</span>��Ϊ��λ�ӳ٣����ƣ�phase
-shift������<span
-class="math inline">\(\varphi\left(\omega\right)\)</span>����Hj�ر�ʾ����λ��rad����<span
-class="math inline">\(-\frac{\varphi\left(\omega\right)}{\omega}\)</span>��-��Hj�ئس�Ϊ��λ��ʱ����ʱ�ӣ�phase
-delay������<span
-class="math inline">\(P\left(\omega\right)\)</span>��ʾ����λ��s��
-��Ȼ��ʱ�ӵĹ�ʽ��������λ������Ƶ�ʣ����漰��б�ʣ�����ʹ��bodeͼ�������鿴��ʱ�ӣ���Ϊϵͳ��Ƶ��Ӧ��bodeͼ���������<span
-class="math inline">\(\omega\)</span>�����������<span
+\theta = \omega·t
+\]</span> 式中<span
+class="math inline">\(\theta\)</span>代表相位，单位rad；<span
+class="math inline">\(\omega\)</span>代表角频率，单位rad/s；t代表时间，单位s。
+我们把<span
+class="math inline">\(\Delta\theta=\theta\left(t_1\right)-\theta\left(t_2\right)=\omega\left(t_1-t_2\right)\)</span>称为相位延迟（相移，phase
+shift），用<span
+class="math inline">\(\varphi\left(\omega\right)\)</span>、∠Hjω表示，单位是rad；将<span
+class="math inline">\(-\frac{\varphi\left(\omega\right)}{\omega}\)</span>、-∠Hjωω称为相位延时（相时延，phase
+delay），用<span
+class="math inline">\(P\left(\omega\right)\)</span>表示，单位是s。
+既然相时延的公式中又有相位，又有频率，又涉及到斜率，可以使用bode图来清晰查看相时延，因为系统相频响应的bode图横坐标就是<span
+class="math inline">\(\omega\)</span>，纵坐标就是<span
 class="math inline">\(\angle
-H\left(j\omega\right)\)</span>��������������ϵͳ����Ƶ��Ӧbodeͼ��<br></p>
-<p><img src="/img/article/art7/1.png" srcset="/img/loading2.gif" lazyload alt="ͼ 1 ������λϵͳ" /> <img
-src="/img/article/art7/2.png" srcset="/img/loading2.gif" lazyload alt="ͼ 2 ��������λϵͳ" /></p>
-<p>���Կ���������ͼ��
-1��ʾ������λϵͳ������˵������Ƶ��Ӧbodeͼб�ʵ��෴��������ʱ�ӣ�һ��Ǩ�Ƶ���������λϵͳ����ʱ�ӣ�P()=-���ƺ���ûʲôʵ�������ˣ�����ת��һ�룺��ѽ��Ⱥʱ����������λϵͳbodeͼ��б�ʣ�����ֻҪ��Ūһ��������ϵͳbodeͼ��б�ʲ��ͺ��ˣ�ͼ��б����ʲô��ʾ��������΢������Ǻ���Ⱥʱ�ӵĸ���Ӧ�˶���������Ⱥʱ�ӣ�
+H\left(j\omega\right)\)</span>。考虑以下两种系统的相频响应bode图：<br></p>
+<p><img src="/img/article/art7/1.png" srcset="/img/loading2.gif" lazyload alt="图 1 线性相位系统" /> <img
+src="/img/article/art7/2.png" srcset="/img/loading2.gif" lazyload alt="图 2 非线性相位系统" /></p>
+<p>可以看出，对于图表
+1所示线性相位系统，还好说，其相频响应bode图斜率的相反数就是相时延，一旦迁移到非线性相位系统，相时延￥P()=-￥似乎就没什么实际意义了，可是转念一想：诶呀，群时延是线性相位系统bode图的斜率，那我只要再弄一个非线性系统bode图的斜率不就好了？图像斜率用什么表示？不就是微分嘛。于是乎，群时延的概念应运而生，定义群时延：
 <br> <span class="math display">\[
 \tau(\omage) = -\frac{d\varphi H(j\omage)}{d\omega}
 \]</span></p>
-<p>��ʾ�źž���ϵͳ�󣬶����źŴ��ڲ�ͬƵ�ʳɷ��ķ��������Ǹ��Ե���λ��������ʱ���ϵ���ʱ�� <br>
-�������������ǿ��Կ�������ʱ�Ӿ���Ⱥʱ����������λϵͳ�µ����������Ҳ������Ƶ��Ӧbodeͼб��Ϊ��ֵ����ʱ<span
+<p>表示信号经过系统后，对于信号处于不同频率成分的分量，它们各自的相位所经历的时间上的延时。
+<br>
+从上述定义我们可以看出，相时延就是群时延在线性相位系统下的特殊情况，也就是相频响应bode图斜率为定值，此时<span
 class="math inline">\(-\frac{d\angle
 H\left(j\omega\right)}{d\omega}=-\frac{\angle
-H\left(j\omega\right)}{\omega}\)</span>��д��������ɵ����������ж����ʵĶ�����v=�������˸��У�ѧ��΢����֮�����ʵĶ���ʽ�ͱ�ɣ�$v=����ԭ������Ϊ�����о��Ķ��Ǻ����ʼ��˶����������о��ľ����Ը���Щ�ı������˶������Ǻ���ǰ�߶����ʵĶ��岻�����ã�����˵�����ƽ�����ʣ������߶����ʵĶ����Ϊ��ȷ��Ҳ����˲ʱ���ʣ�������˵����ʱ����Ⱥʱ�ӵ�����ͺñ�ƽ��������˲ʱ����֮���������ôһ˵�ǲ��Ǻö������ࣿ
+H\left(j\omega\right)}{\omega}\)</span>。写到这里，不由得想起来初中对速率的定义是v=，而上了高中，学了微积分之后，速率的定义式就变成：$v=￥，原来是因为初中研究的都是恒速率简单运动，而高中研究的就是稍复杂些的变速率运动，于是乎，前者对速率的定义不再适用（或者说变成了平均速率），后者对速率的定义更为精确（也就是瞬时速率）。所以说，相时延与群时延的区别就好比平均速率与瞬时速率之间的区别，这么一说是不是好懂了许多？
 <br></p>
-<h2 id="եɣϊʲôҫⱥʱ">Ե�ɣ�Ϊʲô��ҪȺʱ��</h2>
-<p>���������Ⱥʱ�ӵĶ��壬���ǲ������뵽��ɶ�����ǣ�һ����������ž��һ�Ѷ��壬��ɶ���Ⱑ����ɶ�ð����ǵ�Ȼ���о�һ���źž���ϵͳ���ʧ�������
+<h2 id="缘由为什么需要群时延">缘由：为什么需要群时延</h2>
+<p>有了上面对群时延的定义，我们不经联想到：啥啊这是？一上来就噼里啪啦一堆定义，干啥玩意啊，有啥用啊？那当然是研究一个信号经过系统后的失真情况。
 <br>
-���ǿ���һ�������������һ������ʱ�������źţ���ô��������������ָ���źţ����Ҳ������Ӷ��ɣ�����ʱ�������źŵĸ���Ҷ������һ��һ���������У����ﲻ��ϸչ����������ź���ϵͳ��������ô��Щ��ָ���ź���ͨ��һ��ϵͳ��Ҫ���������һ������������״�������ı䣬��Ҫ��������ʱ���ϵ����λ�ò��ܱ仯��Ҳ��������Ƶ�ʵĲ����ӳ�ʱ��һ�¡��Ȼᣬ������Ƶ�ʵĲ����ӳ�ʱ�䡱��������Ⱥʱ�ӵĶ�����
+我们考虑一个方波，如果是一个连续时间周期信号，那么它是由无数个复指数信号（正弦波）叠加而成（连续时间周期信号的傅里叶级数是一般一个周期序列，这里不详细展开，详见《信号与系统》）。那么这些复指数信号在通过一个系统后，要想输出还是一个方波，即形状不发生改变，就要求它们在时域上的相对位置不能变化，也就是所有频率的波的延迟时间一致。等会，“所有频率的波的延迟时间”，不就是群时延的定义吗？
 <br>
-�������У�����ϣ����ͬƵ�������������ڶ����ʱ���ӳ�����ȵģ��Լ�С������ʧ���ʱ��Ҫ��������λϵͳ���״�ϵͳ�У��ز��źŵĴ�����������������λ�������������������<br>
-���ϵͳ�����е�Ƶ�ʷ���������ͬ����λ��ʱ��������λϵͳ����ʱȺʱ�ӵ�����ʱ�ӣ���Ƶ��Ӧ����Ϊһ��ֱ�ߣ�����ô�źž�����ϵͳ�󣬲��β�����ʧ�棬ֻ����һ������ʱ���������ͬƵ�ʷ����в�ͬ����λ��ʱ����������λϵͳ������ô�źž�����ϵͳ�󽫲���ʧ�档��Ȼ������˵��ʧ����ָ��λʧ�棬����źŻ���Ҫ����������ʧ�棬��ô���ķ�Ƶ��ӦҲ����һ��ˮƽֱ�߲��С�
+音乐厅中，我们希望不同频率声音到达听众耳朵的时间延迟是相等的，以减小声音的失真此时就要求线性相位系统；雷达系统中，回波信号的处理若不满足线性相位，则会给举例计算带来误差。<br>
+如果系统对所有的频率分量都有相同的相位延时（线性相位系统，此时群时延等于相时延，相频响应曲线为一条直线），那么信号经过该系统后，波形不发生失真，只是有一定的延时。但如果不同频率分量有不同的相位延时（非线性相位系统），那么信号经过该系统后将产生失真。当然这里所说的失真是指相位失真，如果信号还想要不发生幅度失真，那么它的幅频响应也得是一条水平直线才行。
 <br></p>
-<p>ע�� <br> ���ֽ�Ƶ��<span
-class="math inline">\(\omega\)</span>����ģ���Ƶ��<span
-class="math inline">\(\Omega\)</span>�Բ���Ƶ��<span
-class="math inline">\(f_s\)</span>��һ��������1 <span
+<p>注： <br> 数字角频率<span
+class="math inline">\(\omega\)</span>等于模拟角频率<span
+class="math inline">\(\Omega\)</span>对采样频率<span
+class="math inline">\(f_s\)</span>归一化，即：1 <span
 class="math inline">\(\omega=\frac{\Omega}{f_s}=\Omega
-T_s\)</span>����λrad������<span
-class="math inline">\(T_s\)</span>Ϊ�������ڣ���λs��<span
-class="math inline">\(\Omega=2\pi f\)</span>����λrad/s��</p>
+T_s\)</span>，单位rad；其中<span
+class="math inline">\(T_s\)</span>为采样周期，单位s；<span
+class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
 
                 
               </div>
@@ -360,7 +361,7 @@ class="math inline">\(\Omega=2\pi f\)</span>����λrad/s��</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD/">#�������</a>
+        <a href="/tags/%E6%A6%82%E5%BF%B5%E8%BE%A8%E6%9E%90/">#概念辨析</a>
       
     </div>
   
@@ -372,7 +373,7 @@ class="math inline">\(\Omega=2\pi f\)</span>����λrad/s��</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Ⱥʱ����ʱ��</div>
+      <div>群时延相时延</div>
       <div>http://example.com/2023/05/08/群时延相时延/</div>
     </div>
     <div class="license-meta">
