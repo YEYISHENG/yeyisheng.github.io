@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art5/6.png">
 <meta property="article:published_time" content="2023-01-14T05:55:49.000Z">
-<meta property="article:modified_time" content="2024-03-06T14:19:59.897Z">
+<meta property="article:modified_time" content="2024-03-06T14:26:15.686Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="乘法器优化">
 <meta property="article:tag" content="Booth编码">
@@ -465,9 +465,13 @@ if &amp; &amp; y_{i+1}&lt;y_i, &amp; &amp; then &amp; &amp; Y_i=-1.
     </tr>
 </tbody>
 </table> -->
-<div class="line-block">Booth乘法表 |</div>
-<p>|:---------:||:---------:| | 乘数位 | 编码位 | | 00 | 0 | | 01 |
-+被乘数 | | 10 | -被乘数 | | 11 | 0 |</p>
+<div class="line-block">Booth乘法表 |<br />
+:-------: || :-------: |<br />
+乘数位 | 编码位 |<br />
+00 | 0 |<br />
+01 | +被乘数 |<br />
+10 | -被乘数 |<br />
+11 | 0 |</div>
 <p>定义<span
 class="math inline">\(Y_i=y_{i-2}+y_{i-3}-2·y_{n-1}\)</span>，考虑(3)式，对于二进制数<span
 class="math inline">\(Y,y_i \in \{0,1\}\)</span> ，从(3)式中可以看出：
