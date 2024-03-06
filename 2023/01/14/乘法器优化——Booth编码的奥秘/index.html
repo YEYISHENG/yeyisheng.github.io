@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art5/6.png">
 <meta property="article:published_time" content="2023-01-14T05:55:49.000Z">
-<meta property="article:modified_time" content="2024-03-06T13:52:58.064Z">
+<meta property="article:modified_time" content="2024-03-06T14:11:06.862Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="乘法器优化">
 <meta property="article:tag" content="Booth编码">
@@ -340,12 +340,13 @@ Encode），它使部分积的数目至少可以缩减到原来的一半。部�
 <br></p>
 <h3 id="补码一位乘法">补码一位乘法</h3>
 <p>下面先简要阐述Booth算法的基本流程： <br> 设<span
-class="math display">\[[X]_补=x_s·x_1·x_2···x_n,[Y]_补=y_s·y_1·y_2···y_n\]</span>，其中<span
+class="math display">\[[X]_补=x_s·x_1·x_2···x_n,[Y]_补=y_s·y_1·y_2···y_n\]</span>
+其中<span
 class="math inline">\(x_s,y_s\)</span>均为符号位将符号位参与计算，运算数以补码表示且被乘数与部分积都取双符号位。
 <br> -
 被乘数和部分积均取两位符号位即变形码，乘数取一位符号位，并参与运算 -
 乘数末尾增设附加位<span class="math inline">\(Y_{n+1}\)</span>
-，其初始值为0 <span class="math inline">\(Y_n\)</span>和<span
+，其初始值为0。 <span class="math inline">\(Y_n\)</span>和<span
 class="math inline">\(Y_{n+1}\)</span>构成各步运算的乘数判断位，按表所示方法进行操作
 -
 按补码移位规则：部分积为正(第一符号位为0)，右移时有效位最高位补0；部分积为负，右移时有效位最高位补1
@@ -408,9 +409,10 @@ src="/img/article/art5/5.png" srcset="/img/loading2.gif" lazyload alt="图 5 Boo
 <p>对于只想浅探Booth编码的定义及工作原理的朋友，上述内容已足够清晰明了。但考虑到严谨性与实际应用，该部分给出部分数学上的推导以及更为详尽的说明。
 <br> 前面已经提到将乘数<span
 class="math inline">\(Y=[0111\_1110]_补\)</span>表示为<span
-class="math inline">\([1000\_00\overline10]，这个转换不是一眼看出来的，怎样将其进行推广，使我们能够对任意的乘数都能进行类似的转换以化简运算呢？
-&lt;br&gt;
-考虑有符号乘数：\)</span>Y=[y_{n-1}y_{n-2}···y_1y_0]_2$ <br></p>
+class="math inline">\([1000\_00\overline10]\)</span>，这个转换不是一眼看出来的，怎样将其进行推广，使我们能够对任意的乘数都能进行类似的转换以化简运算呢？
+<br> 考虑有符号乘数： <span class="math display">\[
+Y=[y_{n-1}y_{n-2}···y_1y_0]_2
+\]</span></p>
 <p><font color = #000000 size=2 face="宋体"><span
 class="math inline">\(Y=[y_{n-1}y_{n-2}···y_1y_0]_2\)</span></font> <br>
 <font color = #000000 size=2 face="宋体"><span
@@ -434,54 +436,56 @@ if &amp; &amp; y_{i+1}&lt;y_i, &amp; &amp; then &amp; &amp; Y_i=-1.
 \end{aligned}
 \right.
 \]</span> 这构成了Booth编码的部分积选择表。 <br></p>
-<table align="center" border="2">
+<!-- <table align="center" border="2" >
 <thead>
-<tr>
-<th colspan="4">
-Booth乘法表
-</th>
+    <tr >
+        <th colspan="4">Booth乘法表</th>
+    </tr>
+</thead>
+<tbody>
+    <tr >
+        <td>乘数位</td>
+        <td>编码位</td>
+    </tr>
+    <tr >
+        <td>00</td>
+        <td>0</td>
+    </tr>
+    <tr >
+        <td>01</td>
+        <td>+被乘数</td>
+    </tr>
+    <tr >
+        <td>10</td>
+        <td>-被乘数</td>
+    </tr>
+    <tr >
+        <td>11</td>
+        <td>0</td>
+    </tr>
+</tbody>
+</table> -->
+<table>
+<thead>
+<tr class="header">
+<th>Booth乘法表</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>
-乘数位
-</td>
-<td>
-编码位
-</td>
+<tr class="odd">
+<td>乘数位</td>
 </tr>
-<tr>
-<td>
-00
-</td>
-<td>
-0
-</td>
+<tr class="even">
+<td>00</td>
 </tr>
-<tr>
-<td>
-01
-</td>
-<td>
-+被乘数
-</td>
+<tr class="odd">
+<td>01</td>
 </tr>
-<tr>
-<td>
-10
-</td>
-<td>
--被乘数
-</td>
+<tr class="even">
+<td>10</td>
 </tr>
-<tr>
-<td>
-11
-</td>
-<td>
-0
-</td>
+<tr class="odd">
+<td>11</td>
 </tr>
 </tbody>
 </table>
