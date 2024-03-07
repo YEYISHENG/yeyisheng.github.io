@@ -16,26 +16,24 @@
   <meta name="author" content="叶逸昇">
   <meta name="keywords" content="">
   
-    <meta name="description" content="引子：咋又是你，群时延？ 今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。  辨析：好像有个弟弟叫相时延？ 首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时">
+    <meta name="description" content="菊次郎没有暑假作业，所以暑假过得很快  2021.9.16 是周四下午，在C403自习。 慵懒，困倦裹挟着我。无心学习，塞上耳机，浸淫不已。 冷不丁蹦出一首久石让的summer，心一惊：莫不是最近练这曲子被音乐软件监听到了？想想也是，变调一夹，呕哑嘲哳，神仙都救不回来。估计软件也听不下去了，推了这首原版好让我迷途知返。呵呵，不存在的，除非把我琴砸了。（砸了我再借室友的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="群时延相时延">
-<meta property="og:url" content="http://example.com/2023/05/08/%E7%BE%A4%E6%97%B6%E5%BB%B6%E7%9B%B8%E6%97%B6%E5%BB%B6/index.html">
+<meta property="og:title" content="菊次郎，你也垂垂老矣">
+<meta property="og:url" content="http://example.com/2024/01/07/%E8%8F%8A%E6%AC%A1%E9%83%8E%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%9E%82%E5%9E%82%E8%80%81%E7%9F%A3/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
-<meta property="og:description" content="引子：咋又是你，群时延？ 今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。  辨析：好像有个弟弟叫相时延？ 首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时">
+<meta property="og:description" content="菊次郎没有暑假作业，所以暑假过得很快  2021.9.16 是周四下午，在C403自习。 慵懒，困倦裹挟着我。无心学习，塞上耳机，浸淫不已。 冷不丁蹦出一首久石让的summer，心一惊：莫不是最近练这曲子被音乐软件监听到了？想想也是，变调一夹，呕哑嘲哳，神仙都救不回来。估计软件也听不下去了，推了这首原版好让我迷途知返。呵呵，不存在的，除非把我琴砸了。（砸了我再借室友的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/article/art7/2.png">
-<meta property="article:published_time" content="2023-05-08T14:54:48.000Z">
-<meta property="article:modified_time" content="2024-03-07T11:37:08.323Z">
+<meta property="article:published_time" content="2024-01-07T06:44:22.000Z">
+<meta property="article:modified_time" content="2024-03-07T11:58:42.111Z">
 <meta property="article:author" content="叶逸昇">
-<meta property="article:tag" content="概念辨析">
+<meta property="article:tag" content="无病呻吟">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/article/art7/2.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>群时延相时延 - YeYisheng&#39;s Blog</title>
+  <title>菊次郎，你也垂垂老矣 - YeYisheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article/art7/2.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/article/art8/1.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="群时延相时延"></span>
+            <span id="subtitle" data-typed-text="菊次郎，你也垂垂老矣"></span>
           
         </div>
 
@@ -216,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-08 22:54" pubdate>
-          2023年5月8日 晚上
+        <time datetime="2024-01-07 14:44" pubdate>
+          2024年1月7日 下午
         </time>
       </span>
     
@@ -228,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k 字
+          1.7k 字
         
       </span>
     
@@ -239,7 +237,7 @@
         
         
         
-          18 分钟
+          15 分钟
         
       </span>
     
@@ -285,7 +283,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">群时延相时延</h1>
+            <h1 style="display: none">菊次郎，你也垂垂老矣</h1>
             
               <p class="note note-info">
                 
@@ -298,63 +296,34 @@
             
               <div class="markdown-body">
                 
-                <h2 id="引子咋又是你群时延">引子：咋又是你，群时延？</h2>
-<p>今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。
-<br></p>
-<h2 id="辨析好像有个弟弟叫相时延">辨析：好像有个弟弟叫相时延？</h2>
-<p>首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时间与相位又该如何联系上？我们很自然地联想到时间与相位之间的关系：
-<br> <span class="math display">\[
-\theta = \omega·t
-\]</span> 式中<span
-class="math inline">\(\theta\)</span>代表相位，单位rad；<span
-class="math inline">\(\omega\)</span>代表角频率，单位rad/s；t代表时间，单位s。
-我们把<span
-class="math inline">\(\Delta\theta=\theta\left(t_1\right)-\theta\left(t_2\right)=\omega\left(t_1-t_2\right)\)</span>称为相位延迟（相移，phase
-shift），用<span
-class="math inline">\(\varphi\left(\omega\right)\)</span>、∠Hjω表示，单位是rad；将<span
-class="math inline">\(-\frac{\varphi\left(\omega\right)}{\omega}\)</span>、<span
-class="math inline">\(-\frac{\angle
-H\left(j\omega\right)}{\omega}\)</span>称为相位延时（相时延，phase
-delay），用<span
-class="math inline">\(P\left(\omega\right)\)</span>表示，单位是s。
-既然相时延的公式中又有相位，又有频率，又涉及到斜率，可以使用bode图来清晰查看相时延，因为系统相频响应的bode图横坐标就是<span
-class="math inline">\(\omega\)</span>，纵坐标就是<span
-class="math inline">\(\angle
-H\left(j\omega\right)\)</span>。考虑以下两种系统的相频响应bode图：<br></p>
-<p><img src="/img/article/art7/1.png" srcset="/img/loading2.gif" lazyload alt="图 1 线性相位系统" /> <img
-src="/img/article/art7/2.png" srcset="/img/loading2.gif" lazyload alt="图 2 非线性相位系统" /></p>
-<p>可以看出，对于图1所示线性相位系统，还好说，其相频响应bode图斜率的相反数就是相时延，一旦迁移到非线性相位系统，相时延<span
-class="math inline">\(P\left(\omega\right)=-\frac{\angle
-H\left(j\omega\right)}{\omega}\)</span>似乎就没什么实际意义了，可是转念一想：诶呀，群时延是线性相位系统bode图的斜率，那我只要再弄一个非线性系统bode图的斜率不就好了？图像斜率用什么表示？不就是微分嘛。于是乎，群时延的概念应运而生，定义群时延：
-<br> <span class="math display">\[
-\tau(\omega) = -\frac{d\angle H(j\omega)}{d\omega}
-\]</span></p>
-<p><font color = #ff0000>表示信号经过系统后，对于信号处于不同频率成分<span
-class="math inline">\(\mathbf{\omega}\)</span>的分量，它们各自的相位所经历的时间上的延时。</font>
+                <pre><code class="hljs">            菊次郎没有暑假作业，所以暑假过得很快 </code></pre>
+<p>2021.9.16<br> 是周四下午，在C403自习。<br>
+慵懒，困倦裹挟着我。无心学习，塞上耳机，浸淫不已。<br>
+冷不丁蹦出一首久石让的summer，心一惊：莫不是最近练这曲子被音乐软件监听到了？想想也是，变调一夹，呕哑嘲哳，神仙都救不回来。估计软件也听不下去了，推了这首原版好让我迷途知返。呵呵，不存在的，除非把我琴砸了。（砸了我再借室友的，，，）<br>
+曲未过半，揉碎了桌上的模电，运放与三极管都圈不住我的思绪，如同杂乱无章的载流子胡乱碰撞，飘飞到五六年前那个热烈而盛大的夏天。<br>
+“老杨，我来找你！你妈在家吗？” <br> “来，不在！” <br> “把大勇喊上？”
+<br> “嗯” <br>
+那时都还没有手机，三个人，挤在书房里，一旁的风扇吱呀作响，电脑开着坦克大战，也不知主机里的数字信号，怎么就随机到了这首summer。激荡、共鸣，一串串成谐波关系的傅立叶信号在我脑海里交叠、归一。同一串信号，跨越了两千多个日夜，连接过去和未来，在六年的时间之海里穿梭，竟带给我说不出的感动。好像你无意间在书桌里翻出一件笨拙的手工，嘲弄之余，又想到当初小心摆弄时的艰辛、被剪刀划破手指时的痛楚、以及叠上最后一折时，那小小心灵里的兴奋与雀跃，依然历历在目，却又怅然若失。
+<br> “诶你别说，这歌怪好听的” <br>
+“听着挺活泼，却莫名有一种怀旧的感觉，说不定以后再听这首歌的时候，还会想起我们夏天的经历呢”
+<br> “诶呦呦，老李，你这人就爱开玩笑” <br>
+“好家伙，跟踪导弹是吧，有本事别用鼠标！” <br>
+我本以为是一句玩笑，经不住时间的打磨。可是，六年后的某天，在某个不知名的午后，熟悉的音符闯入，记忆如上了发条般准时，倾泻而下，涌入我未来的无数个日夜，或是滴水成冰的九冬，或是烈炎灼髓的三伏，也不知这记忆中尚需呵护的夏天，还能慰藉我多少感伤的岁月。
 <br>
-从上述定义我们可以看出，相时延就是群时延在线性相位系统下的特殊情况，也就是相频响应bode图斜率为定值，此时<span
-class="math inline">\(-\frac{d\angle
-H\left(j\omega\right)}{d\omega}=-\frac{\angle
-H\left(j\omega\right)}{\omega}\)</span>。写到这里，不由得想起来初中对速率的定义是<span
-class="math inline">\(v=\frac{s}{t}\)</span>，而上了高中，学了微积分之后，速率的定义式就变成：<span
-class="math inline">\(v=\frac{ds}{dt}\)</span>，原来是因为初中研究的都是恒速率简单运动，而高中研究的就是稍复杂些的变速率运动，于是乎，前者对速率的定义不再适用（或者说变成了平均速率），后者对速率的定义更为精确（也就是瞬时速率）。所以说，相时延与群时延的区别就好比平均速率与瞬时速率之间的区别，这么一说是不是好懂了许多？
-<br></p>
-<h2 id="缘由为什么需要群时延">缘由：为什么需要群时延</h2>
-<p>有了上面对群时延的定义，我们不经联想到：啥啊这是？一上来就噼里啪啦一堆定义，干啥玩意啊，有啥用啊？那当然是研究一个信号经过系统后的失真情况。
+记忆里的夏天是旧椅老树抱西瓜，嘴角挂着淌下的瓜汁；是蝉鸣和着路边小贩的吆喝，搅动了甜腻的糖水；是树下老人的棋局，轻轻晃悠的蒲扇，震得开裂的棋子，在皲纹苍黄的楚河汉界上排兵布阵、剑气纵横，似乎有几分漫漫黄沙、金戈铁马的韵味。
+<br> “老张，你又耍赖，藏我車你还，当我瞎？这局不算，重来！” <br>
+白衣苍狗，流年经转，树下人影掠逝，来去匆匆，也不知最后那老张头，后来又赢了几局？可惜，残局、破局，乃至败局，犹能重开，可我弄丢的那些夏天，却再也找不回来。
 <br>
-我们考虑一个方波，如果是一个连续时间周期信号，那么它是由无数个复指数信号（正弦波）叠加而成（连续时间周期信号的傅里叶级数是一般一个周期序列，这里不详细展开，详见《信号与系统》）。那么这些复指数信号在通过一个系统后，要想输出还是一个方波，即形状不发生改变，就要求它们在时域上的<font color = #ff0000>相对位置</font>不能变化，也就是<font color = #ff0000>所有频率的波的延迟时间一致</font>。等会，“所有频率的波的延迟时间”，不就是群时延的定义吗？
+仔细一想，真的是我把夏天弄丢了吗？我不知多少次梦到我又紧握笔杆，埋头在紧张的考场，我会为填错一个选项懊恼，会在铃声敲响时惊醒，黄粱一梦，仓惶醒来，匆忙洗一把脸，穿衣准备去学校，找了半天却找不到课本和双肩包，才恍惚想起自己在多年前明眀没有做好准备，就被推搡着长大成人，像是九月的某天，夏天的味道还未褪散，突然感知到河岸的风带来凉意，抬头瞥见几片染黄的树叶，它意味着爱慕的心绪不了了之，没牵到的手，未送出的信，青春潦草收场后关上了门。
 <br>
-音乐厅中，我们希望不同频率声音到达听众耳朵的时间延迟是相等的，以减小声音的失真此时就要求线性相位系统；雷达系统中，回波信号的处理若不满足线性相位，则会给举例计算带来误差。<br>
-如果系统对所有的频率分量都有相同的相位延时（线性相位系统，此时群时延等于相时延，相频响应曲线为一条直线），那么信号经过该系统后，波形不发生失真，只是有一定的延时。但如果不同频率分量有不同的相位延时（非线性相位系统），那么信号经过该系统后将产生失真。当然这里所说的失真是指相位失真，如果信号还想要不发生幅度失真，那么它的幅频响应也得是一条水平直线才行。
+哈，搞半天是夏天丢下了我，可惜还没来得及跟夏天挥手告别那仓促的人生，眨眼便落入了平庸之海。我想追上那些夕阳，追上记忆里人头攒动的操场，摇摆不定的秋千，和我怎么都攀不上去的单杠，但我追不上了，人类终究是有极限的。逝川与流光，飘忽不相待，岁月飞跑，一把短藏刀，我一生的好时光引颈就戮，这路遥马急的人间，又经得住几个六年之约？假如真能重来一次，我会鼓起勇气，向那个如紫罗兰花瓣般飘动的女孩勇敢诉说吗？可能还是不会吧，少年侠骨香，纵然有睥睨万物的傲气，依旧未褪尽孩童的稚嫩。
+<br>
+我依然能够听到窗外聒噪的蝉鸣，却无法置身朗朗书声的课堂；我也能看见裹满阳光的课桌，但人面早已不知何处去；我走过很多华灯初上，人影流梭的街口，终究忘不掉无数次晚修后，跑道上逐闹的人群，和陪我走过一圈又一圈的那个人。
+<br>
+经历愈多，愈是感到自己的平凡与渺小，六年前总想生如夏花般绚烂，六年后发觉平凡才是唯一的答案。谁赏江上明月，谁闻江声浩荡，不过是渺渺天地一白丁，纵然心路八千里，胸怀云与月，奈何囿于条条框框，无论最开始如何的降心相从和单刀直入，纵横八方走不出一个人字。我做不到东坡那般出世——一蓑烟雨、袖手何方闲处看，用舍由时？行藏在我?达咩
+<br>
+哈哈哈，说多了，确实有些感伤了，打起精神！世路无穷，劳生有限，似此区区长鲜欢！
 <br></p>
-<p>注： <br> 数字角频率<span
-class="math inline">\(\omega\)</span>等于模拟角频率<span
-class="math inline">\(\Omega\)</span>对采样频率<span
-class="math inline">\(f_s\)</span>归一化，即：1 <span
-class="math inline">\(\omega=\frac{\Omega}{f_s}=\Omega
-T_s\)</span>，单位rad；其中<span
-class="math inline">\(T_s\)</span>为采样周期，单位s；<span
-class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
 
                 
               </div>
@@ -373,15 +342,8 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  <a href="/categories/%E7%B5%AE%E8%A8%80%E7%A2%8E%E7%AC%94/" class="category-chain-item">絮言碎笔</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E9%80%9A%E4%BF%A1%E5%8E%9F%E7%90%86/" class="category-chain-item">通信原理</a>
-  
-  
-
   
 
       </span>
@@ -395,7 +357,7 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%A6%82%E5%BF%B5%E8%BE%A8%E6%9E%90/">#概念辨析</a>
+        <a href="/tags/%E6%97%A0%E7%97%85%E5%91%BB%E5%90%9F/">#无病呻吟</a>
       
     </div>
   
@@ -407,8 +369,8 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>群时延相时延</div>
-      <div>http://example.com/2023/05/08/群时延相时延/</div>
+      <div>菊次郎，你也垂垂老矣</div>
+      <div>http://example.com/2024/01/07/菊次郎，你也垂垂老矣/</div>
     </div>
     <div class="license-meta">
       
@@ -420,7 +382,7 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月8日</div>
+          <div>2024年1月7日</div>
         </div>
       
       
@@ -452,18 +414,12 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/07/%E8%8F%8A%E6%AC%A1%E9%83%8E%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%9E%82%E5%9E%82%E8%80%81%E7%9F%A3/" title="菊次郎，你也垂垂老矣">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">菊次郎，你也垂垂老矣</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/07/MATLAB%E6%B1%82%E8%A7%A3%E5%87%BD%E6%95%B0%E6%9C%80%E5%80%BC/" title="MATLAB求解函数最值">
-                        <span class="hidden-mobile">MATLAB求解函数最值</span>
+                      <a href="/2023/05/08/%E7%BE%A4%E6%97%B6%E5%BB%B6%E7%9B%B8%E6%97%B6%E5%BB%B6/" title="群时延相时延">
+                        <span class="hidden-mobile">群时延相时延</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -523,12 +479,6 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -722,49 +672,6 @@ class="math inline">\(\Omega=2\pi f\)</span>，单位rad/s；</p>
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
