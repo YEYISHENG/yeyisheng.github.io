@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
 <meta property="og:description" content="引子：咋又是你，群时延？ 今天在看通信原理时，又碰到了群时延这个老朋友，之前在看信号与系统与射频集成电路基础时就没怎么弄明白，今儿个又让我给遇上了，俗话说再一再二不再三，今天必须把它给解决掉。查了很多资料，又翻出了之前信号与系统，写得那叫一个obscure，又费了很大功夫查资料，终于弄明白了。  辨析：好像有个弟弟叫相时延？ 首先要明确的概念是，时延代表的含义是什么——时间上的延迟。那么时">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/matlab.png">
+<meta property="og:image" content="http://example.com/img/article/art7/2.png">
 <meta property="article:published_time" content="2023-05-08T14:54:48.000Z">
-<meta property="article:modified_time" content="2024-03-06T15:48:11.164Z">
+<meta property="article:modified_time" content="2024-03-07T11:15:19.731Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="概念辨析">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/matlab.png">
+<meta name="twitter:image" content="http://example.com/img/article/art7/2.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -194,7 +194,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/matlab.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/article/art7/2.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年3月6日 晚上
+                    本文最后更新于：2024年3月7日 晚上
                   
                 
               </p>
@@ -312,7 +312,9 @@ class="math inline">\(\omega\)</span>代表角频率，单位rad/s；t代表时�
 class="math inline">\(\Delta\theta=\theta\left(t_1\right)-\theta\left(t_2\right)=\omega\left(t_1-t_2\right)\)</span>称为相位延迟（相移，phase
 shift），用<span
 class="math inline">\(\varphi\left(\omega\right)\)</span>、∠Hjω表示，单位是rad；将<span
-class="math inline">\(-\frac{\varphi\left(\omega\right)}{\omega}\)</span>、-∠Hjωω称为相位延时（相时延，phase
+class="math inline">\(-\frac{\varphi\left(\omega\right)}{\omega}\)</span>、<span
+class="math inline">\(-\frac{\angle
+H\left(j\omega\right)}{\omega}\)</span>称为相位延时（相时延，phase
 delay），用<span
 class="math inline">\(P\left(\omega\right)\)</span>表示，单位是s。
 既然相时延的公式中又有相位，又有频率，又涉及到斜率，可以使用bode图来清晰查看相时延，因为系统相频响应的bode图横坐标就是<span
@@ -325,7 +327,7 @@ src="/img/article/art7/2.png" srcset="/img/loading2.gif" lazyload alt="图 2 非
 class="math inline">\(P\left(\omega\right)=-\frac{\angle
 H\left(j\omega\right)}{\omega}\)</span>似乎就没什么实际意义了，可是转念一想：诶呀，群时延是线性相位系统bode图的斜率，那我只要再弄一个非线性系统bode图的斜率不就好了？图像斜率用什么表示？不就是微分嘛。于是乎，群时延的概念应运而生，定义群时延：
 <br> <span class="math display">\[
-\tau(\omega) = -\frac{d\angle H(j\omege)}{d\omega}
+\tau(\omega) = -\frac{d\angle H(j\omega)}{d\omega}
 \]</span></p>
 <p>表示信号经过系统后，对于信号处于不同频率成分<span
 class="math inline">\(\mathbf{\omega}\)</span>的分量，它们各自的相位所经历的时间上的延时。
