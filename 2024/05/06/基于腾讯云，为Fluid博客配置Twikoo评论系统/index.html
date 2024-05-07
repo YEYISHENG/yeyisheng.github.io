@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art9/">
 <meta property="article:published_time" content="2024-05-06T10:45:59.000Z">
-<meta property="article:modified_time" content="2024-05-07T08:48:49.221Z">
+<meta property="article:modified_time" content="2024-05-07T08:52:58.071Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="网页部署">
 <meta name="twitter:card" content="summary_large_image">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.8k 字
         
       </span>
     
@@ -332,14 +332,14 @@ aria-label="[https://answers.netlify.com/](https://answers.netlify.com/t/authent
 最后我选择换一个邮箱进行注册，我使用了网易邮箱进行注册，然后在验证身份的时候又遇到了验证不通过的问题，，，如图3，我只能在论坛中求助管理员<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[We were unable to verify your identity and reinstate your Netlify account](https://answers.netlify.com/t/we-were-unable-to-verify-your-identity-and-reinstate-your-netlify-account/115468/19)">[4]</span></a></sup>，请管理员帮忙通过验证。
-![图 3 error2]</p>
+<img src="/img/article/art9/error2.png" srcset="/img/loading2.gif" lazyload alt="图 3 error2" /></p>
 <h4 id="配置本地yml文件">配置本地yml文件</h4>
 <p>在<strong>主题配置文件</strong>中开启Twikoo评论系统，具体路径为/themes/fluid/_cnfig.yml
 1.将comments下的type设置为twikoo <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">comments:</span><br>   <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>   <span class="hljs-comment"># 指定的插件，需要同时设置对应插件的必要参数</span><br>   <span class="hljs-comment"># The specified plugin needs to set the necessary parameters at the same time</span><br>   <span class="hljs-comment"># Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus</span><br>   <span class="hljs-attr">type:</span> <span class="hljs-string">twikoo</span><br></code></pre></td></tr></table></figure>
 2.配置twikoo评论模块参数，这里的enVId就是图1中的<strong>Direct
 URL</strong>，将其复制到这里就可以了。 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Twikoo</span><br><span class="hljs-comment"># 基于腾讯云开发</span><br><span class="hljs-comment"># Based on Tencent CloudBase</span><br><span class="hljs-comment"># See: https://twikoo.js.org</span><br><span class="hljs-attr">twikoo:</span><br>  <span class="hljs-attr">envId:</span> <br>  <span class="hljs-attr">region:</span> <span class="hljs-string">ap-shanghai</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br></code></pre></td></tr></table></figure>
-到这里，一个不影响使用的评论系统就搭建起来了，如果想追求更好的体验，比如当有人评论时即时通知或邮件通知博主，可以接着看下面的步骤。
-#### 开启即时通知</p>
+到这里，一个不影响使用的评论系统就搭建起来了，如果想追求更好的体验，比如当有人评论时即时通知或邮件通知博主，可以接着看下面的步骤。</p>
+<h4 id="开启即时通知">开启即时通知</h4>
 <h4 id="开启邮件通知">开启邮件通知</h4>
 <section class="footnotes">
 <div class="footnote-list">
