@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art-bash/pic0.png">
 <meta property="article:published_time" content="2024-06-14T04:50:48.000Z">
-<meta property="article:modified_time" content="2024-06-14T15:16:47.202Z">
+<meta property="article:modified_time" content="2024-06-14T15:52:37.476Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="Bash">
 <meta property="article:tag" content="Shell">
@@ -361,23 +361,25 @@ aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux he
 id="shell编程7">Shell编程<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[shell学习教程(超详细完整)_shell教程-CSDN博客](https://blog.csdn.net/w918589859/article/details/108752592)">[7]</span></a></sup></h2>
-<p>在第二小节“Shell中执行命令的方式”中提到了批处理的方式执行Shell命令，这就涉及到Shell编程了，值得一提的是，业界所说的Shell通常都是指Shell脚本（script），但读者朋友要知道，Shell和Shell
+<p>在第二小节<a
+href="#shell中执行命令的方式">Shell中执行命令的方式</a>中提到了批处理的方式执行Shell命令，这就涉及到Shell编程了，值得一提的是，业界所说的Shell通常都是指Shell脚本（script），但读者朋友要知道，Shell和Shell
 script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的"shell编程"都是指Shell脚本编程，不是指开发Shell自身。<br>
 Shell脚本以.sh后缀结尾，使用<code>vi/vim</code>或<code>touch</code>创建test.sh文件，并使用<code>vi/vim</code>编辑，敲入一些代码，第一行一般为<code>#!/bin/bash</code>。<br>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This is test&quot;</span><br></code></pre></td></tr></table></figure></p>
-<p><code>#!</code>是一个约定的标记，告诉系统其后路径所指定的程序即是解释此脚本文件的Shell程序。我们在第一小节“简介”
-中提到shell又分很多种类，其中Bash（Bourne Again
+<p><code>#!</code>是一个约定的标记，告诉系统其后路径所指定的程序即是解释此脚本文件的Shell程序。我们在第一小节<a
+href="#简介">简介</a> 中提到shell又分很多种类，其中Bash（Bourne Again
 Shell）是最广泛使用的一种shell。在一般情况下，人们并不区分Bourne
 Shell和Bourne Again
 Shell，所以，像<code>#!/bin/sh</code>，它同样也可以改为<code>#!/bin/bash</code>。<br>
-完成编写后，保存退出，并使用<code>chmod 777 test.sh</code>使其具有可执行权限，这样，我们的第一个Shell脚本就编写完成了。使用<code>./test.sh</code>就可以执行此脚本，可以看出会在terminal打印出“hello,world!”字符串。<br></p>
+完成编写后，保存退出，并使用<code>chmod 777 test.sh</code>使其具有可执行权限，这样，我们的第一个Shell脚本就编写完成了。使用<code>./test.sh</code>就可以执行此脚本，可以看出会在terminal打印出“This
+is test”字符串。<br></p>
 <h2 id="bash常见指令">Bash常见指令</h2>
 <ul>
 <li>alias: 设置bash别名；</li>
 <li>bg: 使一个被挂起的进程在后台继续执行；</li>
 <li>cd: 改变当前工作目录；</li>
 <li>exit: 终止shell；</li>
-<li>export: 使变量的值对当前shell的所有子进程都可见 ；</li>
+<li>export: 使变量的值对当前shell的所有子进程都可见；</li>
 <li>fc: 用来编辑历史命令列表里的命令；</li>
 <li>fg: 使一个被挂起的进程在前台继续执行；</li>
 <li>help: 显示bash内部命令的帮助信息；</li>
