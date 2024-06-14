@@ -16,17 +16,21 @@
   <meta name="author" content="叶逸昇">
   <meta name="keywords" content="">
   
-    <meta name="description" content="## 简介    Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁[1][2]。    Shell是一个命令语言解释器（command-language interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities and application progra">
+    <meta name="description" content="简介   Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁[1][2]。    Shell是一个命令语言解释器（command-language interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities and application programs）所调">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bash&#x2F;Shell">
 <meta property="og:url" content="http://example.com/2024/06/14/Bash-Shell/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
-<meta property="og:description" content="## 简介    Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁[1][2]。    Shell是一个命令语言解释器（command-language interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities and application progra">
+<meta property="og:description" content="简介   Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁[1][2]。    Shell是一个命令语言解释器（command-language interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities and application programs）所调">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/article/art-bash/pic0.png">
 <meta property="article:published_time" content="2024-06-14T04:50:48.000Z">
-<meta property="article:modified_time" content="2024-06-14T05:34:11.413Z">
+<meta property="article:modified_time" content="2024-06-14T13:27:05.527Z">
 <meta property="article:author" content="叶逸昇">
+<meta property="article:tag" content="Bash">
+<meta property="article:tag" content="Shell">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/article/art-bash/pic0.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -191,7 +195,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/over.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/article/art-bash/pic0.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -225,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          3.6k 字
         
       </span>
     
@@ -236,7 +240,7 @@
         
         
         
-          21 分钟
+          31 分钟
         
       </span>
     
@@ -287,7 +291,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年6月14日 下午
+                    本文最后更新于：2024年6月14日 晚上
                   
                 
               </p>
@@ -295,8 +299,8 @@
             
               <div class="markdown-body">
                 
-                <p><a name="简介"> ## 简介 </a>
-  Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+                <h2 id="简介">简介</h2>
+<p>  Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[Shell 教程 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-shell.html)">[1]</span></a></sup><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
 class="hint--top hint--rounded"
@@ -309,7 +313,8 @@ shell所解释。一些命令，比如打印当前工作目录命令（pwd），
 bash内部的</strong>（就象DOS的内部命令）。其他命令，比如拷贝命令（cp）和移动命令（rm），<strong>是存在于文件系统中某个目录下的单独的程序</strong>。而对用户来说，你不知道（或者可能不关心）一个命令是建立在Shell内部还是一个单独的程序<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[Shell | Linux基础概要 (gitbooks.io)](https://abcfy2.gitbooks.io/linux_basic/content/first_sense_for_linux/shell/index.html)">[3]</span></a></sup>。<br>
-  Linux的Shell种类众多，常见的有： - Bourne
+<img src="/img/article/art-bash/pic1.png" srcset="/img/loading2.gif" lazyload alt="图1 shell" /></p>
+<p>  Linux的Shell种类众多，常见的有： - Bourne
 Shell（/usr/bin/sh或/bin/sh） - Bourne Again Shell（/bin/bash） - C
 Shell（/usr/bin/csh） - K Shell（/usr/bin/ksh） - Shell for
 Root（/sbin/sh） <br></p>
@@ -317,41 +322,92 @@ Root（/sbin/sh） <br></p>
 Shell）的改进版，其中Bourne就是sh的作者。Bash是当前大多数Linux发行版的默认Shell，可以说，Bash之于Shell就如同Ubuntu之于Linux<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[知乎 (zhihu.com)](https://www.zhihu.com/question/40448945)">[4]</span></a></sup>。<br>
-  使用指令<code>cat /etc/shells</code>指令来查看当前Linux系统的可用Shell。<br></p>
-<p>  使用指令<code>echo $SHELL</code>查看当前系统所使用的Shell种类，比如我系统中使用的就是Bash。<br></p>
+  使用指令<code>cat /etc/shells</code>指令来查看当前Linux系统的可用Shell。<br>
+<img src="/img/article/art-bash/pic2.png" srcset="/img/loading2.gif" lazyload alt="图2 查看可用shell" /></p>
+<p>  使用指令<code>echo $SHELL</code>查看当前系统所使用的Shell种类，比如我系统中使用的就是Bash。<br>
+<img src="/img/article/art-bash/pic3.png" srcset="/img/loading2.gif" lazyload
+alt="图3 查看当前系统使用的shell" /></p>
 <h2 id="shell中执行命令的方式">Shell中执行命令的方式</h2>
 <p>  Shell有两种执行命令的方式：<br>
   (1)交互式（Interactive）：解释执行用户的命令，用户输入一条命令，Shell就解释执行一条。比如我们平时经常在terminal命令行使用cd、pwd、mv、cp、tar等命令，都属于此种方式。<br>
   (2)批处理（Batch）：用户事先写一个Shell脚本(Script)如.sh文件，其中有很多条命令，让Shell一次把这些命令执行完，而不必一条一条地敲命令。<br>
-  在使用交互式方法执行Shell命令时，通常有一些重要的快捷键需要我们掌握，掌握它们可以让我们执行命令时事半功倍。<br></p>
+  在使用交互式方法执行Shell命令时，通常有一些重要的快捷键需要我们掌握，掌握它们可以让我们执行命令时事半功倍。<br>
+<img src="/img/article/art-bash/pic4.png" srcset="/img/loading2.gif" lazyload
+alt="图4 Terminal快捷键" /></p>
 <h2 id="shell中命令的种类">Shell中命令的种类</h2>
 <p>  Shell中命令有三类<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[Bash编程入门-1：Shell与Bash - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/56532223)">[5]</span></a></sup>，分别是：<br>
   (1)内建（built-in）命令：是Shell程序的一部分，写在bash的源码<code>builtins</code>里面的，通常在Shell程序被加载驻留在系统内存中，解析内部命令不需要创建子进程，因此执行速度快于下面的外部命令，比如<code>history、cd、exit</code><sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux help - man-CSDN博客](https://blog.csdn.net/m0_56238419/article/details/123912800)">[6]</span></a></sup>，使用<code>help</code>即可列出所有内建命令，也可以使用<code>help COMMAND</code>查看内建函数的详细介绍；<br></p>
+aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux help - man-CSDN博客](https://blog.csdn.net/m0_56238419/article/details/123912800)">[6]</span></a></sup>，使用<code>help</code>即可列出所有内建命令，也可以使用<code>help COMMAND</code>查看内建函数的详细介绍；<br>
+<img src="/img/article/art-bash/pic5.png" srcset="/img/loading2.gif" lazyload
+alt="图5 查看Shell所有内建命令" /></p>
 <p>  (2)外部命令：保存在shell之外的脚本，提供了额外的功能，是Linux实用程序的一部分，功能比较强大，不随系统一起被加载到内存中，外部命令虽然不在Shell中，但其命令的调用时由shell程序控制的，外部命令是在bash之后额外安装的，通常放在<code>/bin，/usr/bin，/sbin，/usr/sbin</code>等等。比如：<code>ls</code>、<code>vi</code>等；<br>
-  (3)别名(alias)：给某个命令的简称。<br></p>
-<p>  需要注意的是<code>help</code>命令不带任何参数的话只用于显示内建命令的帮助信息，包括一些简要说明以及一些参数的使用以及说明，如果加上<code>--help</code>的参数就可以查看外部命令的帮助信息了。<br></p>
+  (3)别名(alias)：给某个命令的简称。<br> <img
+src="/img/article/art-bash/pic6.png" srcset="/img/loading2.gif" lazyload alt="图6 查看Shell命令种类" /></p>
+<p>  需要注意的是<code>help</code>命令不带任何参数的话只用于显示内建命令的帮助信息，包括一些简要说明以及一些参数的使用以及说明，如果加上<code>--help</code>的参数就可以查看外部命令的帮助信息了。<br>
+<img src="/img/article/art-bash/pic7.png" srcset="/img/loading2.gif" lazyload
+alt="图7 使用help查看命令介绍" /></p>
 <p>  如果想查看更加详细的命令介绍，可以使用<code>man</code>，比<code>help</code>更加详细，而且无内建命令和外部命令之分，<code>man</code>好比一个电子词典，里面多是对命令的详细解释信息，<code>help</code>适合在紧急是忘记用哪个参数的时候用，不太紧急的适合可以用<code>man</code><sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux help - man-CSDN博客](https://blog.csdn.net/m0_56238419/article/details/123912800)">[6]</span></a></sup>。
-&gt; 比man更详细的帮助手册——info。</p>
+aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux help - man-CSDN博客](https://blog.csdn.net/m0_56238419/article/details/123912800)">[6]</span></a></sup>。<br>
+&gt; 比man更详细的帮助手册——info。<br></p>
 <h2
 id="shell编程7">Shell编程<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[shell学习教程(超详细完整)_shell教程-CSDN博客](https://blog.csdn.net/w918589859/article/details/108752592)">[7]</span></a></sup></h2>
 <p>  在第二小节“Shell中执行命令的方式”中提到了批处理的方式执行Shell命令，这就涉及到Shell编程了，值得一提的是，业界所说的Shell通常都是指Shell脚本（script），但读者朋友要知道，Shell和Shell
-script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的"shell编程"都是指Shell脚本编程，不是指开发Shell自身。
-  Shell脚本以.sh后缀结尾，使用<code>vi/vim</code>或<code>touch</code>创建test.sh文件，并使用<code>vi/vim</code>编辑，敲入一些代码，第一行一般为<code>#!/bin/bash</code>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World !&quot;</span><br></code></pre></td></tr></table></figure></p>
-<p>  <code>#!</code>是一个约定的标记，告诉系统其后路径所指定的程序即是解释此脚本文件的Shell程序。我们在第一小节“简介”<a
-href="#简介">link text</a> 中提到shell又分很多种类，其中Bash（Bourne
-Again Shell）是最广泛使用的一种shell。在一般情况下，人们并不区分Bourne
+script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的"shell编程"都是指Shell脚本编程，不是指开发Shell自身。<br>
+  Shell脚本以.sh后缀结尾，使用<code>vi/vim</code>或<code>touch</code>创建test.sh文件，并使用<code>vi/vim</code>编辑，敲入一些代码，第一行一般为<code>#!/bin/bash</code>。<br>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This is test&quot;</span><br></code></pre></td></tr></table></figure></p>
+<p>  <code>#!</code>是一个约定的标记，告诉系统其后路径所指定的程序即是解释此脚本文件的Shell程序。我们在第一小节“简介”
+中提到shell又分很多种类，其中Bash（Bourne Again
+Shell）是最广泛使用的一种shell。在一般情况下，人们并不区分Bourne
 Shell和Bourne Again
 Shell，所以，像<code>#!/bin/sh</code>，它同样也可以改为<code>#!/bin/bash</code>。
-  完成编写后，保存退出，并使用<code>chmod 777 test.sh</code>使其具有可执行权限，这样，我们的第一个shell脚本就编写完成了。使用<code>./test.sh</code>就可以执行此脚本，可以看出会在terminal打印出“hello,world!”字符串。</p>
+  完成编写后，保存退出，并使用<code>chmod 777 test.sh</code>使其具有可执行权限，这样，我们的第一个shell脚本就编写完成了。使用<code>./test.sh</code>就可以执行此脚本，可以看出会在terminal打印出“hello,world!”字符串。
+## Bash常见指令   alias: 设置bash别名；   bg:
+使一个被挂起的进程在后台继续执行；   cd: 改变当前工作目录；   exit:
+终止shell；   export: 使变量的值对当前shell的所有子进程都可见 ；   fc:
+用来编辑历史命令列表里的命令；   fg: 使一个被挂起的进程在前台继续执行；
+  help: 显示bash内部命令的帮助信息；   kill: 终止某个进程；   pwd:
+显示当前工作目录；   unalias: 删除已定义的别名。</p>
+<h2
+id="bash常见环境变量在etcprofile文件中配置">Bash常见环境变量（在/etc/profile文件中配置）</h2>
+<p>  这里是几个最有用的bash变量，包括变量名和简单描述:   EDITOR, FCEDIT:
+bsah fc 命令的缺省编辑器。   HISTFILE: 用于贮存历史命令的文件。
+  HISTSIZE: 历史命令列表的大小。   PWD: 当前工作目录。   PATH：
+预设可执行文件或命令的搜索路径。<code>env</code>命令显示所有的环境变量
+。环境变量以<code>:</code>分开。环境变量名前<code>$</code>符号表示该变量本次定义之前的值。
+  USER: 用户登录时使用的用户名。   HOME：当前用户主目录
+  SHELL：是指当前用户用的是哪种Shell。set命令显示所有本地定义的Shell变量。
+  LOGNAME：指当前用户的登录名。其值为<code>$USER</code>。
+  HOSTNAME：所使用的主机名。供应用程序使用。
+  PS1：命令行的一级提示符（格数如下，用法如右）：export
+PS1="[]$"<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[linux shell中环境变量$PS1详解-CSDN博客](https://blog.csdn.net/ishulei/article/details/108826516)">[8]</span></a></sup>
+    代表日期，格式为weekday month date，例如：Wed Dec 12
+    完整的主机名称。例如：hostname是debian.linux
+    仅取主机的第一个名字，如上例，则为debian，.linux则被省略
+    显示时间为24小时格式，如：HH：MM：SS     ：显示时间为12小时格式
+    ：显示时间为24小时格式：HH：MM     当前用户的账号名称 如：root
+    BASH的版本信息  如:3.2
+    ：完整的工作目录名称。家目录会以<code>~</code>代替
+如显示<code>/etc/default/</code>
+    ：利用basename取得工作目录名称，只会列出最后一个目录。如上例则只显示default
+    # ：下达的第几个命令     $
+：提示字符，如果是root时，提示符为：<code>#</code>，普通用户则为：<code>$ </code>
+  PS2：命令行的二级提示符，默认为<code>&gt;</code><sup id="fnref:9" class="footnote-ref"><a href="#fn:9" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[BASH脚本基础：环境变量PS2介绍_shell ps2是什么-CSDN博客](https://blog.csdn.net/liumiaocn/article/details/104110665)">[9]</span></a></sup>。
+  MAIL： 存放用户电子邮件的邮箱（ASCII码文件）。   INPUTRC:
+存放的是针对键盘热键的信息（ASCII码文件）。
+  LANG/LANGUGE：语言相关的环境变量，多语言用户可以修改。</p>
+<p>  在这里对PS1这个变量进行进一步的解释，PS1这个变量就是用来定义每次使用终端时前面那一行的样式的<br>
+<img src="/img/article/art-bash/pic8.png" srcset="/img/loading2.gif" lazyload alt="图8 PS1作用的结果" /></p>
+<p>  注意，如果在shell中修改该变量的值，只是临时生效的，一旦注销或重启系统就会消失。要想永久生效，必须写入环境变量配置文件<br></p>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
@@ -403,6 +459,20 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/w918589859/article/de
 <a href="#fnref:7" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
+<li>
+<span id="fn:8" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/ishulei/article/details/108826516">linux
+shell中环境变量$PS1详解-CSDN博客</a>
+<a href="#fnref:8" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:9" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/liumiaocn/article/details/104110665">BASH脚本基础：环境变量PS2介绍_shell
+ps2是什么-CSDN博客</a>
+<a href="#fnref:9" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
 </ol>
 </div>
 </section>
@@ -414,6 +484,43 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/w918589859/article/de
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%B5%8C%E5%85%A5%E5%BC%8FLinux/" class="category-chain-item">嵌入式Linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Bash/">#Bash</a>
+      
+        <a href="/tags/Shell/">#Shell</a>
+      
+    </div>
   
 </div>
 
@@ -555,6 +662,12 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/w918589859/article/de
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -748,6 +861,49 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/w918589859/article/de
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
