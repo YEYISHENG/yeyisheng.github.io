@@ -16,26 +16,23 @@
   <meta name="author" content="叶逸昇">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本文在参考了Hexo Fulid用户手册中的评论小节和Twikoo文档中的Hugging Face部署相关小节的前提下成功为博客搭建了评论系统。下面将简要介绍整个部署过程：  正如Twikoo首页所写的：  &gt; 一个简洁、安全、免费的静态网站评论系统。 简约的设计和简便的部署方式让我在一开始就选择使用这种方式部署评论系统。搭建Twikoo分为两步： - 配置云函数； - 在本地博">
+    <meta name="description" content="## 简介    Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁[1][2]。    Shell是一个命令语言解释器（command-language interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities and application progra">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于腾讯云，为Fluid博客配置Twikoo评论系统">
-<meta property="og:url" content="http://example.com/2024/05/06/%E5%9F%BA%E4%BA%8E%E8%85%BE%E8%AE%AF%E4%BA%91%EF%BC%8C%E4%B8%BAFluid%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AETwikoo%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="Bash&#x2F;Shell">
+<meta property="og:url" content="http://example.com/2024/06/14/Bash-Shell/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
-<meta property="og:description" content="本文在参考了Hexo Fulid用户手册中的评论小节和Twikoo文档中的Hugging Face部署相关小节的前提下成功为博客搭建了评论系统。下面将简要介绍整个部署过程：  正如Twikoo首页所写的：  &gt; 一个简洁、安全、免费的静态网站评论系统。 简约的设计和简便的部署方式让我在一开始就选择使用这种方式部署评论系统。搭建Twikoo分为两步： - 配置云函数； - 在本地博">
+<meta property="og:description" content="## 简介    Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁[1][2]。    Shell是一个命令语言解释器（command-language interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities and application progra">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/article/art9/">
-<meta property="article:published_time" content="2024-05-06T10:45:59.000Z">
-<meta property="article:modified_time" content="2024-05-07T08:58:52.615Z">
+<meta property="article:published_time" content="2024-06-14T04:50:48.000Z">
+<meta property="article:modified_time" content="2024-06-14T05:34:11.413Z">
 <meta property="article:author" content="叶逸昇">
-<meta property="article:tag" content="网页部署">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/article/art9/">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>基于腾讯云，为Fluid博客配置Twikoo评论系统 - YeYisheng&#39;s Blog</title>
+  <title>Bash/Shell - YeYisheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -194,13 +191,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/article/art9/') no-repeat center center; background-size: cover;">
+     style="background: url('/img/over.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="基于腾讯云，为Fluid博客配置Twikoo评论系统"></span>
+            <span id="subtitle" data-typed-text="Bash/Shell"></span>
           
         </div>
 
@@ -216,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-06 18:45" pubdate>
-          2024年5月6日 晚上
+        <time datetime="2024-06-14 12:50" pubdate>
+          2024年6月14日 下午
         </time>
       </span>
     
@@ -228,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2.5k 字
         
       </span>
     
@@ -239,7 +236,7 @@
         
         
         
-          16 分钟
+          21 分钟
         
       </span>
     
@@ -285,12 +282,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">基于腾讯云，为Fluid博客配置Twikoo评论系统</h1>
+            <h1 style="display: none">Bash/Shell</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年5月7日 下午
+                    本文最后更新于：2024年6月14日 下午
                   
                 
               </p>
@@ -298,80 +295,112 @@
             
               <div class="markdown-body">
                 
-                <p>本文在参考了<a
-target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/guide/#%E8%AF%84%E8%AE%BA">Hexo
-Fulid用户手册</a>中的<strong>评论</strong>小节和<a
-target="_blank" rel="noopener" href="https://twikoo.js.org/backend.html#hugging-face-%E9%83%A8%E7%BD%B2">Twikoo文档</a>中的<del><strong>Hugging
-Face部署</strong></del>相关小节的前提下成功为博客搭建了评论系统。下面将简要介绍整个部署过程：
-<br> 正如Twikoo首页所写的： <br> &gt;
-一个简洁、安全、免费的静态网站评论系统。</p>
-<p>简约的设计和简便的部署方式让我在一开始就选择使用这种方式部署评论系统。搭建Twikoo分为两步：<br>
-- 配置云函数； - 在本地博客主题中配置Twikoo。</p>
-<p>让我们开始吧！<br></p>
-<h4 id="部署云函数">部署云函数</h4>
-<p>部署云函数时，我采取的方案是有充足的免费额度且中国大陆访问速度较快的Hugging
-Face和Netlify这两种部署方案。</p>
-<h5 id="基于hugging-face">基于Hugging Face <br></h5>
-<p>我最开始就是使用的huggingface部署的云函数，步骤完全参考<a
-target="_blank" rel="noopener" href="https://twikoo.js.org/backend.html#hugging-face-%E9%83%A8%E7%BD%B2">Twikoo文档</a>，我将其归为以下两步：<br>
-1.部署数据库，参考文档中使用的数据库是MongoDB平台
-2.基于huggingface部署云函数，在部署完毕后会生成一个环境id，如图1所示，图中的<strong>Direct
-URL</strong>就是环境id。我们将在<strong>配置本地yml文件</strong>中用到
-<img src="/img/article/art9/enVid.png" srcset="/img/loading2.gif" lazyload alt="图 1 环境id" /></p>
-<h5 id="基于netfily">基于Netfily</h5>
-<p>最开始我是使用了HuggingFace部署的云函数，本来都已经把评论系统搭建好了的。但是我后来想加一个邮件通知的功能，在<strong>开启邮件通知</strong>里发送测试邮件时一直提示“测试结果：{"result":{"message":"SMTP
-邮箱配置异常：Connection
-timeout"}}”，一查才发现huggingface限制了容器发送邮件的能力<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+                <p><a name="简介"> ## 简介 </a>
+  Shell是运行在终端中的文本互动程序，是用户与Linux内核之间的接口程序，是二者沟通的桥梁<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="[在huggingface部署的无论怎么设置邮件通知测试都是提示 SMTP 邮箱配置异常](https://github.com/twikoojs/twikoo/discussions/643)">[1]</span></a></sup>，遂使用Netlify部署数据库。注意：在创建Netlify账号时，<strong>最好先停掉代理，否则会注册失败</strong>，好像是会触发身份审核<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+aria-label="[Shell 教程 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-shell.html)">[1]</span></a></sup><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="[V2EX:你们注册的 netlify 需要身份验证么?](https://www.v2ex.com/t/970267)">[2]</span></a></sup>。但是停掉代理之后好像又不能访问Netlify注册网站了，无解了属于是。
-我是如何解决的呢？
-说来好笑，本来我是开着代理创建我的Netlify账号，我想使用github账号进行注册，但由于我忘记及时在邮箱中点击验证邮件导致我的github注册失败了，弹出了图2这个图，说我验证失败了。然后我又使用邮箱注册，但是它一直不给我发邮件，我猜测我的邮箱被它识别为垃圾邮箱了。本来我是准备放弃的，后来我在Netlify的Q&amp;A网页中<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+aria-label="[Linux(四)：什么是Bash、什么是shell？_bash shell-CSDN博客](https://blog.csdn.net/mingyuli/article/details/112420435)">[2]</span></a></sup>。
+<br>   Shell是一个命令语言解释器（command-language
+interpreter）。拥有自己内建的shell命令集。此外，Shell也能被系统中其他有效的Linux实用程序和应用程序（utilities
+and application programs）所调用。<br>
+  不论何时你键入一个命令，它都被Linux
+shell所解释。一些命令，比如打印当前工作目录命令（pwd），是<strong>包含在Linux
+bash内部的</strong>（就象DOS的内部命令）。其他命令，比如拷贝命令（cp）和移动命令（rm），<strong>是存在于文件系统中某个目录下的单独的程序</strong>。而对用户来说，你不知道（或者可能不关心）一个命令是建立在Shell内部还是一个单独的程序<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="[https://answers.netlify.com/](https://answers.netlify.com/t/authentication-error-authenticating-failed-due-to-the-following-error-your-account-requires-additional-verification-i-have-not-receive-the-verification-link/113382)">[3]</span></a></sup>看到好多人也有这个问题，我也准备提问，在发布问题的时候它提示我需要登录才能提问，然后我在这个网页里面使用邮箱注册了成功了。。。正当我满心欢喜地准备登入Netlify时，才发现我刚刚注册的是Netlify论坛的账号，并不能在这里使用，，，
-<img src="/img/article/art9/error1.png" srcset="/img/loading2.gif" lazyload alt="图 2 error1" />
-最后我选择换一个邮箱进行注册，我使用了网易邮箱进行注册，然后在验证身份的时候又遇到了验证不通过的问题，，，如图3，我只能在论坛中求助管理员<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+aria-label="[Shell | Linux基础概要 (gitbooks.io)](https://abcfy2.gitbooks.io/linux_basic/content/first_sense_for_linux/shell/index.html)">[3]</span></a></sup>。<br>
+  Linux的Shell种类众多，常见的有： - Bourne
+Shell（/usr/bin/sh或/bin/sh） - Bourne Again Shell（/bin/bash） - C
+Shell（/usr/bin/csh） - K Shell（/usr/bin/ksh） - Shell for
+Root（/sbin/sh） <br></p>
+<p>  Bash（GNU Bourne-Again Shell）是最常用的一种Shell，它是sh（Bourne
+Shell）的改进版，其中Bourne就是sh的作者。Bash是当前大多数Linux发行版的默认Shell，可以说，Bash之于Shell就如同Ubuntu之于Linux<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="[We were unable to verify your identity and reinstate your Netlify account](https://answers.netlify.com/t/we-were-unable-to-verify-your-identity-and-reinstate-your-netlify-account/115468/19)">[4]</span></a></sup>，请管理员帮忙通过验证。
-<img src="/img/article/art9/error2.png" srcset="/img/loading2.gif" lazyload alt="图 3 error2" /></p>
-<h4 id="配置本地yml文件">配置本地yml文件</h4>
-<p>在<strong>主题配置文件</strong>中开启Twikoo评论系统，具体路径为/themes/fluid/_cnfig.yml
-1.将comments下的type设置为twikoo <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">comments:</span><br>   <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>   <span class="hljs-comment"># 指定的插件，需要同时设置对应插件的必要参数</span><br>   <span class="hljs-comment"># The specified plugin needs to set the necessary parameters at the same time</span><br>   <span class="hljs-comment"># Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus</span><br>   <span class="hljs-attr">type:</span> <span class="hljs-string">twikoo</span><br></code></pre></td></tr></table></figure>
-2.配置twikoo评论模块参数，这里的enVId就是图1中的<strong>Direct
-URL</strong>，将其复制到这里就可以了。 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-comment"># Twikoo</span><br><span class="hljs-comment"># 基于腾讯云开发</span><br><span class="hljs-comment"># Based on Tencent CloudBase</span><br><span class="hljs-comment"># See: https://twikoo.js.org</span><br><span class="hljs-attr">twikoo:</span><br>  <span class="hljs-attr">envId:</span> <br>  <span class="hljs-attr">region:</span> <span class="hljs-string">ap-shanghai</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">window.location.pathname</span><br></code></pre></td></tr></table></figure>
-到这里，一个不影响使用的评论系统就搭建起来了，如果想追求更好的体验，比如当有人评论时即时通知或邮件通知博主，可以接着看下面的步骤。</p>
-<h4 id="开启即时通知">开启即时通知</h4>
-<h4 id="开启邮件通知">开启邮件通知</h4>
-<h4 id="参考网址">参考网址</h4>
+aria-label="[知乎 (zhihu.com)](https://www.zhihu.com/question/40448945)">[4]</span></a></sup>。<br>
+  使用指令<code>cat /etc/shells</code>指令来查看当前Linux系统的可用Shell。<br></p>
+<p>  使用指令<code>echo $SHELL</code>查看当前系统所使用的Shell种类，比如我系统中使用的就是Bash。<br></p>
+<h2 id="shell中执行命令的方式">Shell中执行命令的方式</h2>
+<p>  Shell有两种执行命令的方式：<br>
+  (1)交互式（Interactive）：解释执行用户的命令，用户输入一条命令，Shell就解释执行一条。比如我们平时经常在terminal命令行使用cd、pwd、mv、cp、tar等命令，都属于此种方式。<br>
+  (2)批处理（Batch）：用户事先写一个Shell脚本(Script)如.sh文件，其中有很多条命令，让Shell一次把这些命令执行完，而不必一条一条地敲命令。<br>
+  在使用交互式方法执行Shell命令时，通常有一些重要的快捷键需要我们掌握，掌握它们可以让我们执行命令时事半功倍。<br></p>
+<h2 id="shell中命令的种类">Shell中命令的种类</h2>
+<p>  Shell中命令有三类<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[Bash编程入门-1：Shell与Bash - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/56532223)">[5]</span></a></sup>，分别是：<br>
+  (1)内建（built-in）命令：是Shell程序的一部分，写在bash的源码<code>builtins</code>里面的，通常在Shell程序被加载驻留在系统内存中，解析内部命令不需要创建子进程，因此执行速度快于下面的外部命令，比如<code>history、cd、exit</code><sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux help - man-CSDN博客](https://blog.csdn.net/m0_56238419/article/details/123912800)">[6]</span></a></sup>，使用<code>help</code>即可列出所有内建命令，也可以使用<code>help COMMAND</code>查看内建函数的详细介绍；<br></p>
+<p>  (2)外部命令：保存在shell之外的脚本，提供了额外的功能，是Linux实用程序的一部分，功能比较强大，不随系统一起被加载到内存中，外部命令虽然不在Shell中，但其命令的调用时由shell程序控制的，外部命令是在bash之后额外安装的，通常放在<code>/bin，/usr/bin，/sbin，/usr/sbin</code>等等。比如：<code>ls</code>、<code>vi</code>等；<br>
+  (3)别名(alias)：给某个命令的简称。<br></p>
+<p>  需要注意的是<code>help</code>命令不带任何参数的话只用于显示内建命令的帮助信息，包括一些简要说明以及一些参数的使用以及说明，如果加上<code>--help</code>的参数就可以查看外部命令的帮助信息了。<br></p>
+<p>  如果想查看更加详细的命令介绍，可以使用<code>man</code>，比<code>help</code>更加详细，而且无内建命令和外部命令之分，<code>man</code>好比一个电子词典，里面多是对命令的详细解释信息，<code>help</code>适合在紧急是忘记用哪个参数的时候用，不太紧急的适合可以用<code>man</code><sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[Linux：帮助命令——help、man、info的简单介绍_linux help - man-CSDN博客](https://blog.csdn.net/m0_56238419/article/details/123912800)">[6]</span></a></sup>。
+&gt; 比man更详细的帮助手册——info。</p>
+<h2
+id="shell编程7">Shell编程<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[shell学习教程(超详细完整)_shell教程-CSDN博客](https://blog.csdn.net/w918589859/article/details/108752592)">[7]</span></a></sup></h2>
+<p>  在第二小节“Shell中执行命令的方式”中提到了批处理的方式执行Shell命令，这就涉及到Shell编程了，值得一提的是，业界所说的Shell通常都是指Shell脚本（script），但读者朋友要知道，Shell和Shell
+script是两个不同的概念。由于习惯的原因，简洁起见，本文出现的"shell编程"都是指Shell脚本编程，不是指开发Shell自身。
+  Shell脚本以.sh后缀结尾，使用<code>vi/vim</code>或<code>touch</code>创建test.sh文件，并使用<code>vi/vim</code>编辑，敲入一些代码，第一行一般为<code>#!/bin/bash</code>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello World !&quot;</span><br></code></pre></td></tr></table></figure></p>
+<p>  <code>#!</code>是一个约定的标记，告诉系统其后路径所指定的程序即是解释此脚本文件的Shell程序。我们在第一小节“简介”<a
+href="#简介">link text</a> 中提到shell又分很多种类，其中Bash（Bourne
+Again Shell）是最广泛使用的一种shell。在一般情况下，人们并不区分Bourne
+Shell和Bourne Again
+Shell，所以，像<code>#!/bin/sh</code>，它同样也可以改为<code>#!/bin/bash</code>。
+  完成编写后，保存退出，并使用<code>chmod 777 test.sh</code>使其具有可执行权限，这样，我们的第一个shell脚本就编写完成了。使用<code>./test.sh</code>就可以执行此脚本，可以看出会在terminal打印出“hello,world!”字符串。</p>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
 <li>
-<span id="fn:1" class="footnote-text"><span><a
-target="_blank" rel="noopener" href="https://github.com/twikoojs/twikoo/discussions/643">在huggingface部署的无论怎么设置邮件通知测试都是提示
-SMTP 邮箱配置异常</a>
+<span id="fn:1"
+class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell.html">Shell
+教程 | 菜鸟教程 (runoob.com)</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:2"
-class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.v2ex.com/t/970267">V2EX:你们注册的
-netlify 需要身份验证么?</a>
+<span id="fn:2" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/mingyuli/article/details/112420435">Linux(四)：什么是Bash、什么是shell？_bash
+shell-CSDN博客</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
 <span id="fn:3" class="footnote-text"><span><a
-target="_blank" rel="noopener" href="https://answers.netlify.com/t/authentication-error-authenticating-failed-due-to-the-following-error-your-account-requires-additional-verification-i-have-not-receive-the-verification-link/113382">https://answers.netlify.com/</a>
+target="_blank" rel="noopener" href="https://abcfy2.gitbooks.io/linux_basic/content/first_sense_for_linux/shell/index.html">Shell
+| Linux基础概要 (gitbooks.io)</a>
 <a href="#fnref:3" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:4" class="footnote-text"><span><a
-target="_blank" rel="noopener" href="https://answers.netlify.com/t/we-were-unable-to-verify-your-identity-and-reinstate-your-netlify-account/115468/19">We
-were unable to verify your identity and reinstate your Netlify
-account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
+<span id="fn:4"
+class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/40448945">知乎
+(zhihu.com)</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:5" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/56532223">Bash编程入门-1：Shell与Bash
+- 知乎 (zhihu.com)</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:6" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56238419/article/details/123912800">Linux：帮助命令——help、man、info的简单介绍_linux
+help - man-CSDN博客</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:7" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/w918589859/article/details/108752592">shell学习教程(超详细完整)_shell教程-CSDN博客</a>
+<a href="#fnref:7" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 </ol>
@@ -385,41 +414,6 @@ account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/" class="category-chain-item">前端</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E7%BD%91%E9%A1%B5%E9%83%A8%E7%BD%B2/">#网页部署</a>
-      
-    </div>
   
 </div>
 
@@ -429,8 +423,8 @@ account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>基于腾讯云，为Fluid博客配置Twikoo评论系统</div>
-      <div>http://example.com/2024/05/06/基于腾讯云，为Fluid博客配置Twikoo评论系统/</div>
+      <div>Bash/Shell</div>
+      <div>http://example.com/2024/06/14/Bash-Shell/</div>
     </div>
     <div class="license-meta">
       
@@ -442,7 +436,7 @@ account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月6日</div>
+          <div>2024年6月14日</div>
         </div>
       
       
@@ -474,18 +468,12 @@ account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/06/14/Bash-Shell/" title="Bash/Shell">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Bash/Shell</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/07/%E8%8F%8A%E6%AC%A1%E9%83%8E%EF%BC%8C%E4%BD%A0%E4%B9%9F%E5%9E%82%E5%9E%82%E8%80%81%E7%9F%A3/" title="菊次郎，你也垂垂老矣">
-                        <span class="hidden-mobile">菊次郎，你也垂垂老矣</span>
+                      <a href="/2024/05/06/%E5%9F%BA%E4%BA%8E%E8%85%BE%E8%AE%AF%E4%BA%91%EF%BC%8C%E4%B8%BAFluid%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AETwikoo%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="基于腾讯云，为Fluid博客配置Twikoo评论系统">
+                        <span class="hidden-mobile">基于腾讯云，为Fluid博客配置Twikoo评论系统</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -567,12 +555,6 @@ account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
 
 
   
-
-
-  
-  
-
-
 
 
 
@@ -766,49 +748,6 @@ account</a> <a href="#fnref:4" rev="footnote" class="footnote-backref">
 
 
   <script>Fluid.plugins.imageCaption();</script>
-
-  
-      <script>
-        if (!window.MathJax) {
-          window.MathJax = {
-            tex    : {
-              inlineMath: { '[+]': [['$', '$']] }
-            },
-            loader : {
-              load: ['ui/lazy']
-            },
-            options: {
-              renderActions: {
-                insertedScript: [200, () => {
-                  document.querySelectorAll('mjx-container').forEach(node => {
-                    let target = node.parentNode;
-                    if (target.nodeName.toLowerCase() === 'li') {
-                      target.parentNode.classList.add('has-jax');
-                    }
-                  });
-                }, '', false]
-              }
-            }
-          };
-        } else {
-          MathJax.startup.document.state(0);
-          MathJax.texReset();
-          MathJax.typeset();
-          MathJax.typesetPromise();
-        }
-
-        Fluid.events.registerRefreshCallback(function() {
-          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
-            MathJax.startup.document.state(0);
-            MathJax.texReset();
-            MathJax.typeset();
-            MathJax.typesetPromise();
-          }
-        });
-      </script>
-    
-
-  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
