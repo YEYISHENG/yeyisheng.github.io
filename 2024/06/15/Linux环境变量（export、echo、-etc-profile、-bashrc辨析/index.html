@@ -24,14 +24,17 @@
 <meta property="og:description" content="由于本人遇到问题经常不求甚解，导致学艺不精。所以每次用Shell指令时，在遇到export、echo、&#x2F;etc&#x2F;profile、~&#x2F;.bashrc等常见的指令和文件时都会有一种“诶好像在哪见过，但我忘了”的感觉，然后再照着教程敲命令，所谓“小和尚念经——有口无心”，正是本人了。好了，本着事不过三的原则，这次下点功夫，索性把这些东西全给他端了。 在开始之前，先介绍Linux中的一些变量，因为它们经">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/artcle/art-export/pic5.png">
-<meta property="og:image" content="http://example.com/img/art/art-export/pic2.png">
-<meta property="og:image" content="http://example.com/img/art/art-export/pic3.png">
-<meta property="og:image" content="http://example.com/img/art/art-export/pic4.png">
-<meta property="og:image" content="http://example.com/img/art/art-export/pic6.png">
-<meta property="og:image" content="http://example.com/img/art/art-export/pic7.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic2.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic3.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic4.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic6.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic7.png">
 <meta property="article:published_time" content="2024-06-15T03:02:39.000Z">
-<meta property="article:modified_time" content="2024-06-17T07:49:01.954Z">
+<meta property="article:modified_time" content="2024-06-18T01:31:05.151Z">
 <meta property="article:author" content="叶逸昇">
+<meta property="article:tag" content="Bash">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="环境变量">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/artcle/art-export/pic5.png">
   
@@ -294,7 +297,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年6月17日 下午
+                    本文最后更新于：2024年6月18日 上午
                   
                 
               </p>
@@ -321,8 +324,8 @@ aria-label="[Linux Bash Shell编程](https://blog.csdn.net/Zheng__Huang/article/
 class="hint--top hint--rounded"
 aria-label="[Shell 变量](https://www.runoob.com/linux/linux-shell-variable.html)">[3]</span></a></sup>。</p>
 <p><code>declare</code>的使用语法是： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">declare</span> [+/-] [选项] 变量名称<br></code></pre></td></tr></table></figure> <img
-src="/img/artcle/art-export/pic1.png" srcset="/img/loading2.gif" lazyload alt="图1 declare参数说明" />
-具体的关于Shell变量和编程方法这里就不再赘述，详情见以下三篇文章： <a
+src="/img/artcle/art-export/pic1.png" srcset="/img/loading2.gif" lazyload alt="图1 declare参数说明" /></p>
+<p>具体的关于Shell变量和编程方法这里就不再赘述，详情见以下三篇文章： <a
 href=""
 title="https://blog.csdn.net/Zheng__Huang/article/details/107902325">Linux
 Bash Shell编程</a> <a href=""
@@ -330,12 +333,12 @@ title="https://www.runoob.com/linux/linux-shell-variable.html">Shell变量</a>
 <a href=""
 title="https://abcfy2.gitbooks.io/linux_basic/content/index.html">Linux基础概要</a></p>
 <p>普通变量的生存时间有限，只能在当前脚本文件或当前Shell中使用，无法在当前Shell的子Shell中使用，因为这些变量没有添加进Shell的环境中，也就是说它们并不是环境变量。以上面的脚本为例，在脚本执行完成后，我想单独打印出a、b、c的值，却只能打印出空白：
-<img src="/img/artcle/art-export/pic5.png" srcset="/img/loading2.gif" lazyload alt="图2 普通变量" />
-<code>./</code>指令会另外打开一个Shell进行可执行文件的执行，由于a、b、c并不是环境变量，所以在其他Shell中无法使用。</p>
+<img src="/img/artcle/art-export/pic5.png" srcset="/img/loading2.gif" lazyload alt="图2 普通变量" /></p>
+<p><code>./</code>指令会另外打开一个Shell进行可执行文件的执行，由于a、b、c并不是环境变量，所以在其他Shell中无法使用。</p>
 <p>关于<code>source</code>、<code>.</code>、<code>sh</code>、<code>bash</code>和<code>./</code>的辨析，可以看我的这篇文章：<a
 href="">待定的文章链接</a></p>
 <h1 id="环境变量">环境变量</h1>
-<p>当我们启动Shell的时候，会引用一组变量以确保正确配置Shell。这些变量还确保终端窗口和Shell可能需要参考的任何信息都可用。总的来说，这些变量包含定义我们在终端窗口中找到的环境的设置，从我们写完代码后调用的GCC编译器位置、Shell尝试查找命令时搜索的目录集以及我们的默认编辑器，一直到我们的语言环境、时区、键盘设置和命令提示符的外观。因此，很自然地，它们被称为环境变量<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+<p>当我们启动Shell的时候，会引用一组变量以<strong>确保正确配置Shell</strong>。这些变量还确保终端窗口和Shell可能需要参考的任何信息都可用。总的来说，这些变量包含定义我们在终端窗口中找到的环境的设置，从我们写完代码后调用的GCC编译器位置、Shell尝试查找命令时搜索的目录集以及我们的默认编辑器，一直到我们的语言环境、时区、键盘设置和命令提示符的外观。因此，很自然地，它们被称为环境变量<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[如何在 Linux 上的 Bash 中设置环境变量](https://cn.linux-console.net/?p=8282)">[4]</span></a></sup>。</p>
 <h2 id="环境变量的继承">环境变量的继承</h2>
@@ -363,15 +366,15 @@ aria-label="[如何在 Linux 上的 Bash 中设置环境变量](https://cn.linux
 <p>如果我们需要自定义一个全用户环境变量，可以将它们添加到/etc/environment文件中。注意需要使用sudo来编辑这个文件：
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo vi <span class="hljs-regexp">/etc/</span>environment<br></code></pre></td></tr></table></figure>
 往其中添加一个名为USER1的变量，注意<strong>需要关机重启或者使用<code>source</code>指令和<code>.</code>指令该文件</strong>后才能使用这个变量：
-<img src="/img/art/art-export/pic2.png" srcset="/img/loading2.gif" lazyload
+<img src="/img/article/art-export/pic2.png" srcset="/img/loading2.gif" lazyload
 alt="图3 添加全用户环境变量" /></p>
 <figure>
-<img src="/img/art/art-export/pic3.png" srcset="/img/loading2.gif" lazyload
+<img src="/img/article/art-export/pic3.png" srcset="/img/loading2.gif" lazyload
 alt="图4 用户yeyisheng使用变量" />
 <figcaption aria-hidden="true">图4 用户yeyisheng使用变量</figcaption>
 </figure>
 <p>因为它是一个全局环境变量，并且对所有人都可用，所以用户yezhixuan可以在下次登录时引用该环境变量：
-<img src="/img/art/art-export/pic4.png" srcset="/img/loading2.gif" lazyload
+<img src="/img/article/art-export/pic4.png" srcset="/img/loading2.gif" lazyload
 alt="图5 用户yezhixuan使用变量" /></p>
 <h2 id="shell环境变量">SHELL环境变量</h2>
 <blockquote>
@@ -402,10 +405,11 @@ alt="图5 用户yezhixuan使用变量" /></p>
 如果只想创建单一用户使用的环境变量，而不是让计算机上的每个用户都受到某一个用户创建的环境变量的影响，我们可以在<code>.bashrc</code>（bash
 runtime
 configuration，bash运行时配置文件）文件中添加属于单一用户的环境变量，该文件在用户的家目录下，文件名称最前面的<code>.</code>代表这是一个隐藏文件，我们需要使用指令<code>ls -a</code>才能查看它。
-<img src="/img/art/art-export/pic6.png" srcset="/img/loading2.gif" lazyload alt="图6 .bashrc" />
-比如我在开发Qt时就在这个文件里面导入了下面几个关于环境配置的环境变量。
-<img src="/img/art/art-export/pic7.png" srcset="/img/loading2.gif" lazyload alt="图7 Qt配置的环境变量" />
-事实上，<code>.bashrc</code>文件是每一位用户用来配置终端功能和属性设置的，修改<code>.bashrc</code>可以改变环境变量PATH、别名alias和提示符。Terminal使用Bash对用户输入的指令进行解释并执行，且允许使用脚本进行一定程度的自定义，这就是<code>.bashrc</code>配置文件的作用。为了加载用户<strong>首选项</strong>，<strong><code>Bash</code>在每次启动时都会自动载入<code>.bashrc</code>配置文件中的内容</strong>，它用于保存和加载不同用户的<strong>终端首选项</strong>和<strong>环境变量</strong><sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
+<img src="/img/article/art-export/pic6.png" srcset="/img/loading2.gif" lazyload alt="图6 .bashrc" /></p>
+<p>比如我在开发Qt时就在这个文件里面导入了下面几个关于环境配置的环境变量。
+<img src="/img/article/art-export/pic7.png" srcset="/img/loading2.gif" lazyload
+alt="图7 Qt配置的环境变量" /></p>
+<p>事实上，<code>.bashrc</code>文件是每一位用户用来配置终端功能和属性设置的，修改<code>.bashrc</code>可以改变环境变量PATH、别名alias和提示符。Terminal使用Bash对用户输入的指令进行解释并执行，且允许使用脚本进行一定程度的自定义，这就是<code>.bashrc</code>配置文件的作用。为了加载用户<strong>首选项</strong>，<strong><code>Bash</code>在每次启动时都会自动载入<code>.bashrc</code>配置文件中的内容</strong>（无论是新打开一个Shell还是在父Shell中打开一个子Shell），它用于保存和加载不同用户的<strong>终端首选项</strong>和<strong>环境变量</strong><sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[博客园](https://www.cnblogs.com/saysmy/articles/11332411.html)">[5]</span></a></sup>。</p>
 <p>自定义<code>.bashrc</code>配置文件的主要好处有： -
@@ -473,6 +477,45 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/saysmy/articles/113
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E5%B5%8C%E5%85%A5%E5%BC%8FLinux/" class="category-chain-item">嵌入式Linux</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Bash/">#Bash</a>
+      
+        <a href="/tags/Shell/">#Shell</a>
+      
+        <a href="/tags/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">#环境变量</a>
+      
+    </div>
   
 </div>
 
@@ -614,6 +657,12 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/saysmy/articles/113
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -807,6 +856,49 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/saysmy/articles/113
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
