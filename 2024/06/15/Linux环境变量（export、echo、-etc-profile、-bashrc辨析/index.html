@@ -32,8 +32,9 @@
 <meta property="og:image" content="http://example.com/img/article/art-export/pic8.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic9.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic11.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic12.png">
 <meta property="article:published_time" content="2024-06-15T03:02:39.000Z">
-<meta property="article:modified_time" content="2024-06-19T13:31:12.025Z">
+<meta property="article:modified_time" content="2024-06-19T14:10:51.502Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="Bash">
 <meta property="article:tag" content="Shell">
@@ -238,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.8k 字
+          5.4k 字
         
       </span>
     
@@ -249,7 +250,7 @@
         
         
         
-          40 分钟
+          46 分钟
         
       </span>
     
@@ -443,7 +444,24 @@ alt="图10 验证环境变量" /></p>
 name和Date）。可以看出，<code>INHERITED_VAR</code>和<code>SESSION_VAR</code>均可在子shell中访问，但<code>COMMON_VAR</code>不可访问。我们只是得到一个空行。<code>INHERITED_VAR</code>是因为<code>export</code>指令导入为环境变量，所以能在子Shell中使用，这个我们能够理解，但是<code>SESSION_VAR</code>并没有导入为环境变量，它为什么也能在子Shell中使用呢？这个问题留给读者自己去思考（&gt;_*。</p>
 <p>注意，虽然<code>INHERITED_VAR</code>被<code>export</code>指令导入为环境变量，但它不是一个全用户环境变量，所以用户<code>yezhixuan</code>并不能使用它。</p>
 <p>要关闭我们的子bash会话，我们使用<code>exit</code>： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure></p>
+<p>接着我们做一个有趣的小实验，创建一个名为<code>envtest.sh</code>的脚本，向其中写入如下内容：
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;SESSION_VAR&quot;</span> <span class="hljs-variable">$SESSION_VAR</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;INHERITED_VAR&quot;</span> <span class="hljs-variable">$INHERITED_VAR</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;COMMON_VAR&quot;</span> <span class="hljs-variable">$COMMON_VAR</span><br></code></pre></td></tr></table></figure>
+分别使用<code>source</code>和<code>.</code>指令执行脚本，打印出来的内容却不大相同，为什么会这样？还记得我在上面曾说过的话吗：“<code>./</code>指令会另外打开一个Shell进行可执行文件的执行”，新打开的Shell同时丢失了<code>SESSION_VAR</code>和<code>COMMON_VAR</code>这两个变量。
+<img src="/img/article/art-export/pic12.png" srcset="/img/loading2.gif" lazyload
+alt="图11 验证脚本对变量的继承" /></p>
+<p>如果我们在命令行导出这两个环境变量，然后再次运行脚本： <img
+src="/img/article/art-export/pic13.png" srcset="/img/loading2.gif" lazyload
+alt="图12 验证脚本对变量的继承" /></p>
+<p>环境变量已经添加到当前shell的环境中，因此它出现在脚本继承的环境中。该脚本也可以引用该环境变量。</p>
 <h2 id="远程连接时可以使用的环境变量">远程连接时可以使用的环境变量</h2>
+<p>我没有在远程会话中使用过环境变量，所以在这里我只是简要介绍一下。</p>
+<blockquote>
+<p>远程登录会话可以访问全局环境变量，但是如果您希望本地定义的环境变量可以远程使用，则必须将它们添加到
+.bash_profile 文件中。您可以在 .bashrc 和 .bash_profile
+文件中设置相同的环境变量，但值不同。这可以通过脚本获取，例如，为本地或远程使用系统的人修改其行为。</p>
+</blockquote>
+<p>据我的理解，如果想要在远程连接时使用环境变量，需要提前在<code>.bash_profile</code>文件中写入。而且<code>.bash_profile</code>和<code>.bashrc</code>二者相互独立，可以在<code>.bash_profile</code>和<code>.bashrc</code>文件中设置名称相同但值不同的环境变量。</p>
+<h2 id="export指令">export指令</h2>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
