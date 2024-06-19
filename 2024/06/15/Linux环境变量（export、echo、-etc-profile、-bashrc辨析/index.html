@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
 <meta property="og:description" content="由于本人遇到问题经常不求甚解，导致学艺不精。所以每次用Shell指令时，在遇到export、echo、&#x2F;etc&#x2F;profile、~&#x2F;.bashrc等常见的指令和文件时都会有一种“诶好像在哪见过，但我忘了”的感觉，然后再照着教程敲命令，所谓“小和尚念经——有口无心”，正是本人了。好了，本着事不过三的原则，这次下点功夫，索性把这些东西全给他端了。 在开始之前，先介绍Linux中的一些变量，因为它们经">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/artcle/art-export/pic5.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic5.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic2.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic3.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic4.png">
@@ -33,14 +33,16 @@
 <meta property="og:image" content="http://example.com/img/article/art-export/pic9.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic11.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic12.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic14.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic15.png">
 <meta property="article:published_time" content="2024-06-15T03:02:39.000Z">
-<meta property="article:modified_time" content="2024-06-19T14:10:51.502Z">
+<meta property="article:modified_time" content="2024-06-19T15:28:05.642Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="Bash">
 <meta property="article:tag" content="Shell">
 <meta property="article:tag" content="环境变量">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/artcle/art-export/pic5.png">
+<meta name="twitter:image" content="http://example.com/img/article/art-export/pic5.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -239,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.4k 字
+          5.8k 字
         
       </span>
     
@@ -250,7 +252,7 @@
         
         
         
-          46 分钟
+          48 分钟
         
       </span>
     
@@ -328,7 +330,7 @@ aria-label="[Linux Bash Shell编程](https://blog.csdn.net/Zheng__Huang/article/
 class="hint--top hint--rounded"
 aria-label="[Shell 变量](https://www.runoob.com/linux/linux-shell-variable.html)">[3]</span></a></sup>。</p>
 <p><code>declare</code>的使用语法是： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">declare</span> [+/-] [选项] 变量名称<br></code></pre></td></tr></table></figure> <img
-src="/img/artcle/art-export/pic1.png" srcset="/img/loading2.gif" lazyload alt="图1 declare参数说明" /></p>
+src="/img/article/art-export/pic1.png" srcset="/img/loading2.gif" lazyload alt="图1 declare参数说明" /></p>
 <p>具体的关于Shell变量和编程方法这里就不再赘述，详情见以下三篇文章： <a
 href=""
 title="https://blog.csdn.net/Zheng__Huang/article/details/107902325">Linux
@@ -337,7 +339,7 @@ title="https://www.runoob.com/linux/linux-shell-variable.html">Shell变量</a>
 <a href=""
 title="https://abcfy2.gitbooks.io/linux_basic/content/index.html">Linux基础概要</a></p>
 <p>普通变量的生存时间有限，只能在当前脚本文件或当前Shell中使用，无法在当前Shell的子Shell中使用，因为这些变量没有添加进Shell的环境中，也就是说它们并不是环境变量。以上面的脚本为例，在脚本执行完成后，我想单独打印出a、b、c的值，却只能打印出空白：
-<img src="/img/artcle/art-export/pic5.png" srcset="/img/loading2.gif" lazyload alt="图2 普通变量" /></p>
+<img src="/img/article/art-export/pic5.png" srcset="/img/loading2.gif" lazyload alt="图2 普通变量" /></p>
 <p><code>./</code>指令会另外打开一个Shell进行可执行文件的执行，由于a、b、c并不是环境变量，所以在其他Shell中无法使用。</p>
 <p>关于<code>source</code>、<code>.</code>、<code>sh</code>、<code>bash</code>和<code>./</code>的辨析，可以看我的这篇文章：<a
 href="">待定的文章链接</a></p>
@@ -431,7 +433,7 @@ alt="图8 验证环境变量" /></p>
 <img src="/img/article/art-export/pic9.png" srcset="/img/loading2.gif" lazyload alt="图9 验证环境变量" />
 <figcaption aria-hidden="true">图9 验证环境变量</figcaption>
 </figure>
-<p><code>export</code>指令用来创建能够被子Shell继承的环境变量，我将在稍后介绍这个命令。</p>
+<p><code>export</code>指令用来创建能够被子Shell继承的环境变量，我将在稍后介绍这个指令。</p>
 <blockquote>
 <p>一个变量创建时，它不会自动地为在它之后创建的shell进程所知。而命令export可以向后面的shell传递变量的值。当一个shell脚本调用并执行时，它不会自动得到原为脚本（调用者）里定义的变量的访问权，除非这些变量已经被显式地设置为可用。export命令可以用于传递一个或多个变量的值到任何后继脚本。
 ----《UNIX教程》</p>
@@ -462,6 +464,17 @@ alt="图12 验证脚本对变量的继承" /></p>
 </blockquote>
 <p>据我的理解，如果想要在远程连接时使用环境变量，需要提前在<code>.bash_profile</code>文件中写入。而且<code>.bash_profile</code>和<code>.bashrc</code>二者相互独立，可以在<code>.bash_profile</code>和<code>.bashrc</code>文件中设置名称相同但值不同的环境变量。</p>
 <h2 id="export指令">export指令</h2>
+<p>Linux<code>export</code>命令用于设置或显示环境变量。</p>
+<p>在 shell 中执行程序时，shell
+会提供一组环境变量。<code>export</code>可新增，修改或删除环境变量，供后续执行的程序使用。<code>export</code>的效力仅限于该次登陆操作<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[Linux export 命令](https://www.runoob.com/linux/linux-comm-export.html)">[6]</span></a></sup>。</p>
+<p>单独使用<code>export</code>命令会打印出当前系统定义的所有环境变量（关注红框部分的PATH变量）
+<img src="/img/article/art-export/pic14.png" srcset="/img/loading2.gif" lazyload alt="图13 export指令" />
+我们可以在打印出来的内容中看到诸如<code>declare -x LANG="zh_CN.UTF-8"</code>的字样，由之前我们对<code>declare</code>指令的介绍可以知道，</p>
+<p>使用指令<code>export PATH=$PATH:/opt</code>，再使用<code>export</code>指令查看当前系统定义的所有环境变量（关注红框部分的PATH变量，发现多了:/opt）.
+<img src="/img/article/art-export/pic15.png" srcset="/img/loading2.gif" lazyload
+alt="图14 export指令" /></p>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
@@ -495,6 +508,13 @@ Linux 上的 Bash 中设置环境变量</a>
 <span id="fn:5" class="footnote-text"><span><a
 target="_blank" rel="noopener" href="https://www.cnblogs.com/saysmy/articles/11332411.html">博客园</a>
 <a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:6"
+class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-export.html">Linux
+export 命令</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 </ol>
