@@ -18,7 +18,7 @@
   
     <meta name="description" content="由于本人遇到问题经常不求甚解，导致学艺不精。所以每次用Shell指令时，在遇到export、echo、&#x2F;etc&#x2F;profile、~&#x2F;.bashrc等常见的指令和文件时都会有一种“诶好像在哪见过，但我忘了”的感觉，然后再照着教程敲命令，所谓“小和尚念经——有口无心”，正是本人了。好了，本着事不过三的原则，这次下点功夫，索性把这些东西全给他端了。 在开始之前，先介绍Linux中的一些变量，因为它们经">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux环境变量（export、echo、&#x2F;etc&#x2F;profile、~&#x2F;.bashrc辨析）">
+<meta property="og:title" content="Linux环境变量（export、echo、&#x2F;etc&#x2F;profile、~&#x2F;.bashrc辨析）(上)">
 <meta property="og:url" content="http://example.com/2024/06/15/Linux%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%EF%BC%88export%E3%80%81echo%E3%80%81-etc-profile%E3%80%81-bashrc%E8%BE%A8%E6%9E%90/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
 <meta property="og:description" content="由于本人遇到问题经常不求甚解，导致学艺不精。所以每次用Shell指令时，在遇到export、echo、&#x2F;etc&#x2F;profile、~&#x2F;.bashrc等常见的指令和文件时都会有一种“诶好像在哪见过，但我忘了”的感觉，然后再照着教程敲命令，所谓“小和尚念经——有口无心”，正是本人了。好了，本着事不过三的原则，这次下点功夫，索性把这些东西全给他端了。 在开始之前，先介绍Linux中的一些变量，因为它们经">
@@ -29,8 +29,11 @@
 <meta property="og:image" content="http://example.com/img/article/art-export/pic4.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic6.png">
 <meta property="og:image" content="http://example.com/img/article/art-export/pic7.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic8.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic9.png">
+<meta property="og:image" content="http://example.com/img/article/art-export/pic11.png">
 <meta property="article:published_time" content="2024-06-15T03:02:39.000Z">
-<meta property="article:modified_time" content="2024-06-18T01:31:05.151Z">
+<meta property="article:modified_time" content="2024-06-19T13:31:12.025Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="Bash">
 <meta property="article:tag" content="Shell">
@@ -42,7 +45,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析） - YeYisheng&#39;s Blog</title>
+  <title>Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）(上) - YeYisheng&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）"></span>
+            <span id="subtitle" data-typed-text="Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）(上)"></span>
           
         </div>
 
@@ -235,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k 字
+          4.8k 字
         
       </span>
     
@@ -246,7 +249,7 @@
         
         
         
-          37 分钟
+          40 分钟
         
       </span>
     
@@ -292,12 +295,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）</h1>
+            <h1 style="display: none">Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）(上)</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年6月18日 上午
+                    本文最后更新于：2024年6月19日 晚上
                   
                 
               </p>
@@ -420,17 +423,27 @@ aria-label="[博客园](https://www.cnblogs.com/saysmy/articles/11332411.html)">
 <code>.bashrc</code>所作的任何更改将在下次启动终端时生效，如果想立即生效可以手动执行<code>source</code>命令或<code>.</code>命令重新读取文件进行刷新。推荐阅读文章<a
 href="" title="https://www.sysgeek.cn/bashrc/">bashrc
 配置文件自定义指南，如何添加别名、使用函数等</a>以便获得对<code>.bashrc</code>文件更加全面和深入的认识。</p>
-<p>扯远了，让我们回到对话环境变量。我们在文件中添加两个变量：
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">COMMAN_VAR=<span class="hljs-string">&quot;This session only&quot;</span><br><span class="hljs-built_in">export</span> INHERITED_VAR=<span class="hljs-string">&quot;Can be inherited by child-session&quot;</span><br></code></pre></td></tr></table></figure>
-<code>export</code>指令用来创建能够被子Shell继承的环境变量，我将在稍后介绍这个命令。</p>
+<p>扯远了，让我们回到对话环境变量。我们分别创建一个普通变量和一个环境变量，同时我还额外创建了一个<code>SESSSION_VAR</code>变量：
+<img src="/img/article/art-export/pic8.png" srcset="/img/loading2.gif" lazyload
+alt="图8 验证环境变量" /></p>
+<figure>
+<img src="/img/article/art-export/pic9.png" srcset="/img/loading2.gif" lazyload alt="图9 验证环境变量" />
+<figcaption aria-hidden="true">图9 验证环境变量</figcaption>
+</figure>
+<p><code>export</code>指令用来创建能够被子Shell继承的环境变量，我将在稍后介绍这个命令。</p>
 <blockquote>
 <p>一个变量创建时，它不会自动地为在它之后创建的shell进程所知。而命令export可以向后面的shell传递变量的值。当一个shell脚本调用并执行时，它不会自动得到原为脚本（调用者）里定义的变量的访问权，除非这些变量已经被显式地设置为可用。export命令可以用于传递一个或多个变量的值到任何后继脚本。
 ----《UNIX教程》</p>
 </blockquote>
 <p>说人话就是，变量在创建时如果不是使用<code>export</code>指令创建的，那么它就是一个普通变量，这个普通变量不能在其他Shell或当前Shell的子Shell中使用；如果使用了<code>export</code>指令创建，那么它就是一个环境变量，这个环境变量能在当前Shell的子Shell中使用。但它仍然不能在另一个Shell中使用，如果像使它在另一个Shell中使用，需要在<code>.bashrc</code>文件中<code>export</code>这个变量。</p>
-<p>现在我们已经创建好了<code>COMMAN_VAR</code>和<code>INHERITED_VAR</code>这两个变量，接着我们在Terminal中打印这两个变量</p>
-<h2
-id="远程连接时可以使用的环境变量">远程连接时可以使用的环境变量：</h2>
+<p>现在我们已经创建好了<code>COMMON_VAR</code>、<code>SESSION_VAR</code>和<code>INHERITED_VAR</code>这三个变量，接着我们在Terminal中将它们打印出来。
+<img src="/img/article/art-export/pic11.png" srcset="/img/loading2.gif" lazyload
+alt="图10 验证环境变量" /></p>
+<p>前三个<code>echo</code>分别打印出了上面三个变量，接着我使用<code>bash</code>指令打开了一个子Shell，（由于我在.bashrc中的设置，所以每打开一个Shell都会打印出User
+name和Date）。可以看出，<code>INHERITED_VAR</code>和<code>SESSION_VAR</code>均可在子shell中访问，但<code>COMMON_VAR</code>不可访问。我们只是得到一个空行。<code>INHERITED_VAR</code>是因为<code>export</code>指令导入为环境变量，所以能在子Shell中使用，这个我们能够理解，但是<code>SESSION_VAR</code>并没有导入为环境变量，它为什么也能在子Shell中使用呢？这个问题留给读者自己去思考（&gt;_*。</p>
+<p>注意，虽然<code>INHERITED_VAR</code>被<code>export</code>指令导入为环境变量，但它不是一个全用户环境变量，所以用户<code>yezhixuan</code>并不能使用它。</p>
+<p>要关闭我们的子bash会话，我们使用<code>exit</code>： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure></p>
+<h2 id="远程连接时可以使用的环境变量">远程连接时可以使用的环境变量</h2>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
@@ -525,7 +538,7 @@ target="_blank" rel="noopener" href="https://www.cnblogs.com/saysmy/articles/113
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）</div>
+      <div>Linux环境变量（export、echo、/etc/profile、~/.bashrc辨析）(上)</div>
       <div>http://example.com/2024/06/15/Linux环境变量（export、echo、-etc-profile、-bashrc辨析/</div>
     </div>
     <div class="license-meta">
