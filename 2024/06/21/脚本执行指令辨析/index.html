@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://example.com/img/article/art-bash-exec/%E7%88%B6%E7%A8%8B%E5%BA%8F.jpg">
 <meta property="og:image" content="http://example.com/img/article/art-bash-exec/eg2.jpg">
 <meta property="article:published_time" content="2024-06-21T05:50:13.000Z">
-<meta property="article:modified_time" content="2024-08-02T15:28:32.049Z">
+<meta property="article:modified_time" content="2024-08-02T15:34:08.600Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="Bash">
 <meta property="article:tag" content="Shell">
@@ -232,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.3k 字
         
       </span>
     
@@ -243,7 +243,7 @@
         
         
         
-          24 分钟
+          21 分钟
         
       </span>
     
@@ -328,25 +328,20 @@ class="hint--top hint--rounded"
 aria-label="[Bash Shell的操作环境](http://cn.linux.vbird.org/linux_basic/0320bash_4.php)">[2]</span></a></sup>。
 <br></p>
 <h3
-id="直接指令下达绝对路径相对路径与path-如果以直接指令下达的方式运行脚本需要脚本具有可执行权限因此在执行脚本前还需要额外加一句下面的指令---code2---以直接指令下达的三种方式如下所示---以绝对路径的形式执行例如指令binls-etc将会列出etc目录下的文件信息前面的binls就是以绝对路径的形式执行了名为ls的脚本指令没错ls等常见的指令其实就是一个个脚本程序哦---以相对路径的形式执行如果你此时正处于bin目录下那么你可以直接使用指令.ls-etc来实现同样的功能.就是当前目录的意思-由于指令的执行需要变量bash章节才会提到的支持若你的可执行文件放置在本目录并且本目录并非正规的可执行文件目录bin-usrbin等为正规此时要执行指令就得要严格指定该可执行文件.代表本目录的意思所以.run.sh代表执行本目录下-名为run.sh的文件啰sup-idfnref3-classfootnote-refa-hreffn3-relfootnotespan-classhint--top-hint--rounded-aria-labellinux目录配置httpswizardforcel.gitbooks.iovbird-linux-basic-4econtent44.html3spanasup---利用环境变量path执行透过path这个变量的顺序搜寻到的第一个命令来运行如果将scripts.sh放入path变量指定的工作目录下我们就可以直接输入scripts.sh来执行这个脚本">直接指令下达（绝对路径、相对路径与<span
-class="math inline">\(PATH）
-如果以直接指令下达的方式运行脚本，需要脚本具有可执行权限，因此，在执行脚本前还需要额外加一句下面的指令：
+id="直接指令下达绝对路径相对路径与path">直接指令下达（绝对路径、相对路径与$PATH）</h3>
+<p>如果以直接指令下达的方式运行脚本，需要脚本具有可执行权限，因此，在执行脚本前还需要额外加一句下面的指令：<br></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> a+x scripts.sh<br></code></pre></td></tr></table></figure>
-以直接指令下达的三种方式如下所示：
-- 以绝对路径的形式执行：例如指令`/bin/ls
-/etc`，将会列出`/etc`目录下的文件信息，前面的`/bin/ls`就是以绝对路径的形式执行了名为`ls`的脚本指令（没错，`ls`等常见的指令其实就是一个个脚本程序哦~）。
--
-以相对路径的形式执行：如果你此时正处于`/bin`目录下，那么你可以直接使用指令`./ls
-/etc`来实现同样的功能，`./`就是“当前目录”的意思。
-  &gt;由于指令的执行需要变量（bash章节才会提到）的支持，若你的可执行文件放置在本目录，并且本目录并非正规的可执行文件目录（/bin,
+<p>以直接指令下达的三种方式如下所示：<br></p>
+<ul>
+<li>以绝对路径的形式执行：例如指令<code>/bin/ls /etc</code>，将会列出<code>/etc</code>目录下的文件信息，前面的<code>/bin/ls</code>就是以绝对路径的形式执行了名为<code>ls</code>的脚本指令（没错，<code>ls</code>等常见的指令其实就是一个个脚本程序哦~）。</li>
+<li>以相对路径的形式执行：如果你此时正处于<code>/bin</code>目录下，那么你可以直接使用指令<code>./ls /etc</code>来实现同样的功能，<code>./</code>就是“当前目录”的意思。
+&gt;由于指令的执行需要变量（bash章节才会提到）的支持，若你的可执行文件放置在本目录，并且本目录并非正规的可执行文件目录（/bin,
 /usr/bin等为正规），此时要执行指令就得要严格指定该可执行文件。“./”代表“本目录”的意思，所以“./run.sh”代表“执行本目录下，
-名为run.sh的文件”啰！&lt;sup id=&quot;fnref:3&quot;
-class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn:3&quot;
-rel=&quot;footnote&quot;&gt;&lt;span class=&quot;hint--top
-hint--rounded&quot;
-aria-label=&quot;[Linux目录配置](https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/44.html)&quot;&gt;[3]&lt;/span&gt;&lt;/a&gt;&lt;/sup&gt;
--
-利用环境变量PATH执行：透过`\)</span>PATH<code>这个变量的顺序搜寻到的第一个命令来运行。如果将</code>scripts.sh<code>放入</code>PATH<code>变量指定的工作目录下，我们就可以直接输入</code>scripts.sh`来执行这个脚本！</h3>
+名为run.sh的文件”啰！<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[Linux目录配置](https://wizardforcel.gitbooks.io/vbird-linux-basic-4e/content/44.html)">[3]</span></a></sup></li>
+<li>利用环境变量PATH执行：透过<code>$PATH</code>这个变量的顺序搜寻到的第一个命令来运行。如果将<code>scripts.sh</code>放入<code>PATH</code>变量指定的工作目录下，我们就可以直接输入<code>scripts.sh</code>来执行这个脚本！</li>
+</ul>
 <p>当然，使用<code>alias</code>设置别名也能实现同样的效果，不过我认为这只是一个“小花招”，就没有把它列为第四种方式。<br></p>
 <p>看到这里，有的同学可以会产生一个疑问：上面提到的<code>ls</code>等脚本指令，我在实际使用的时候都是直接使用的，根本就没有采用什么绝对路径、相对路径和所谓的PATH变量啊，那它到底是怎么执行的？<br></p>
 <p>好，问到点子上了，我们分别看一下<code>ls</code>指令的执行顺序和<code>PATH</code>变量的具体内容：<br>
