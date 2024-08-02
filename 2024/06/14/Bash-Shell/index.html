@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art-bash/pic0.png">
 <meta property="article:published_time" content="2024-06-14T04:50:48.000Z">
-<meta property="article:modified_time" content="2024-06-15T16:02:53.533Z">
+<meta property="article:modified_time" content="2024-07-24T13:49:04.017Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="Bash">
 <meta property="article:tag" content="Shell">
@@ -229,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k 字
+          4.8k 字
         
       </span>
     
@@ -240,7 +240,7 @@
         
         
         
-          31 分钟
+          41 分钟
         
       </span>
     
@@ -291,7 +291,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年6月16日 凌晨
+                    本文最后更新于：2024年7月24日 晚上
                   
                 
               </p>
@@ -316,21 +316,41 @@ aria-label="[Shell | Linux基础概要 (gitbooks.io)](https://abcfy2.gitbooks.io
 <img src="/img/article/art-bash/pic1.png" srcset="/img/loading2.gif" lazyload alt="图1 shell" /></p>
 <p>Linux的Shell种类众多，常见的有：</p>
 <ul>
-<li>Bourne Shell（/usr/bin/sh或/bin/sh）</li>
-<li>Bourne Again Shell（/bin/bash）</li>
-<li>C Shell（/usr/bin/csh）</li>
-<li>K Shell（/usr/bin/ksh）</li>
+<li>Bourne Shell（/usr/bin/sh或/bin/sh，已经被 /bin/bash 所取代）</li>
+<li>Bourne Again Shell（/bin/bash，就是 Linux 默认的 shell）</li>
+<li>C Shell（/usr/bin/csh，已经被 /bin/tcsh 所取代，整合了 C Shell
+，提供更多的功能）</li>
+<li>K Shell（/usr/bin/ksh，Kornshell 由 AT&amp;T Bell lab.
+发展出来的，兼容于 bash）</li>
+<li>Z Shell（基于 ksh 发展出来的，功能更强大的 shell）</li>
 <li>Shell for Root（/sbin/sh） <br></li>
 </ul>
 <p>Bash（GNU Bourne-Again Shell）是最常用的一种Shell，它是sh（Bourne
 Shell）的改进版，其中Bourne就是sh的作者。Bash是当前大多数Linux发行版的默认Shell，可以说，Bash之于Shell就如同Ubuntu之于Linux<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
 class="hint--top hint--rounded"
 aria-label="[知乎 (zhihu.com)](https://www.zhihu.com/question/40448945)">[4]</span></a></sup>。<br>
-使用指令<code>cat /etc/shells</code>指令来查看当前Linux系统的可用Shell。<br>
-<img src="/img/article/art-bash/pic2.png" srcset="/img/loading2.gif" lazyload alt="图2 查看可用shell" /></p>
+使用指令<code>cat /etc/shells</code>指令来查看当前Linux系统的可用Shell。（之所以会有这样一个文件来记录系统的可用Shell，是因为系统某些服务在运行过程中，会去检查用户能够使用的
+shells ，而这些shell的查询就是藉由 /etc/shells 这个文件实现）<br> <img
+src="/img/article/art-bash/pic2.png" srcset="/img/loading2.gif" lazyload alt="图2 查看可用shell" /></p>
 <p>使用指令<code>echo $SHELL</code>查看当前系统所使用的Shell种类，比如我系统中使用的就是Bash。<br>
 <img src="/img/article/art-bash/pic3.png" srcset="/img/loading2.gif" lazyload
 alt="图3 查看当前系统使用的shell" /></p>
+<p>Bash能够作为所有Linux发行版的默认Shell，离不开它的以下几个优点<sup id="fnref:10" class="footnote-ref"><a href="#fn:10" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="[鸟叔的Linux私房菜：基础版](http://cn.linux.vbird.org/linux_basic/0320bash_1.php)">[10]</span></a></sup>：<br>
+- 命令记忆功能（history）
+通过按下键盘的上下键就能够找到曾经输入的所有指令，相信曾为你提供不少的便利。在大多数Linux发行版中，能够记忆的指令高达100条，这些指令都被记录在家目录下的/bash_history中，不过此文件中记录的是上一次登录所使用过的指令；
+- 命令与文件名称补全（Tab按键的妙用） 这也是Bash
+Shell提供的非常棒的功能，为我们省去了背诵各种繁杂指令和文件名称的功夫，我们只需要记住命令开头几个字母按下Tab键就能自动补全名称或者显示所有可运行指令；
+- 别名配置（alias）
+很多朋友喜欢使用的<code>ll</code>指令其实是<code>ls -al</code>的别名，可能他们还不自知（嘻嘻，想知道你的系统中使用了那些别名？在终端中键入<code>alias</code>试试看吧！
+- 工作控制、前景背景控制： (job control, foreground, background)
+这个我不了解，详情请查看参考文献； - 程序化脚本： (shell scripts)
+将你平时管理系统常需要下达的连续命令写成一个脚本文件，
+该脚本可以通过对话交互式的方式来进行主机的侦测工作！整个设计下来几乎就是一个小型的程序语言；
+- 通配符： (Wildcard)
+通配符可以帮助用户查询与命令下达，举例来说，想要知道<code>/usr/bin</code>底下有多少以
+X 为开头的文件吗？使用：<code>ls -l /usr/bin/X*</code>就可以知道了。</p>
 <h2 id="shell中执行命令的方式">Shell中执行命令的方式</h2>
 <p>Shell有两种执行命令的方式：<br>
 (1)交互式（Interactive）：解释执行用户的命令，用户输入一条命令，Shell就解释执行一条。比如我们平时经常在terminal命令行使用<code>cd、pwd、mv、cp、tar</code>等命令，都属于此种方式。<br>
@@ -393,15 +413,23 @@ id="bash常见环境变量在etcprofile文件中配置">Bash常见环境变量�
 <ul>
 <li>EDITOR, FCEDIT: bash fc 命令的缺省编辑器；</li>
 <li>HISTFILE: 用于贮存历史命令的文件；</li>
-<li>HISTSIZE: 历史命令列表的大小；</li>
+<li>HISTSIZE:
+历史命令列表的大小，表明可以存储多少条历史指令，默认是1000条；</li>
 <li>PWD: 当前工作目录；</li>
 <li>PATH：
 预设可执行文件或命令的搜索路径。<code>env</code>命令显示所有的环境变量
 。环境变量以<code>:</code>分开。环境变量名前<code>$</code>符号表示该变量本次定义之-
-前的值；</li>
+前的值。由于文件的搜寻是依序由 PATH
+的变量内的目录来查询，所以，目录的顺序也很重要；</li>
 <li>USER: 用户登录时使用的用户名；</li>
 <li>HOME：当前用户主目录；</li>
-<li>SHELL：是指当前用户用的是哪种Shell。set命令显示所有本地定义的Shell变量；</li>
+<li>LANG/LANGUGE：这个很重要，表示语系，很多信息都会用到他，
+举例来说，当我们在启动某些 perl
+的程序语言文件时，他会主动的去分析语系数据文件，
+如果发现有他无法解析的编码语系，可能会产生错误！一般来说，我们中文编码通常是
+zh_TW.Big5 或者是
+zh_TW.UTF-8，这两个编码偏偏不容易被解译出来，所以有的时候，可能需要修订一下语系数据；</li>
+<li>SHELL：是指当前用户用的是哪种Shell。<code>set</code>命令显示所有本地定义的Shell变量，包括环境变量和自定义变量，而前面提到的<code>env</code>指令只会显示环境变量；</li>
 <li>LOGNAME：指当前用户的登录名。其值为<code>$USER</code>；</li>
 <li>HOSTNAME：所使用的主机名。供应用程序使用；</li>
 <li>PS1：命令行的一级提示符（格数如下，用法如右）：<code>export PS1="[\u@\h \w]\$"</code><sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span
@@ -426,7 +454,8 @@ class="hint--top hint--rounded"
 aria-label="[BASH脚本基础：环境变量PS2介绍_shell ps2是什么-CSDN博客](https://blog.csdn.net/liumiaocn/article/details/104110665)">[9]</span></a></sup>；</li>
 <li>MAIL： 存放用户电子邮件的邮箱（ASCII码文件）；</li>
 <li>INPUTRC: 存放的是针对键盘热键的信息（ASCII码文件）；</li>
-<li>LANG/LANGUGE：语言相关的环境变量，多语言用户可以修改。</li>
+<li>$：代表目前这个 Shell 的线程代号，即所谓的 PID (Process ID)</li>
+<li>?：代表上一个运行的命令所回传的值</li>
 </ul>
 <p>在这里对PS1这个变量进行进一步的解释，PS1这个变量就是用来定义每次使用终端时前面那一行的样式的，比如在这里定义的样式为<code>yeyisheng@ubuntu:~$</code><br>
 <img src="/img/article/art-bash/pic8.png" srcset="/img/loading2.gif" lazyload alt="图8 PS1作用的结果" /></p>
@@ -494,6 +523,12 @@ shell中环境变量$PS1详解-CSDN博客</a>
 target="_blank" rel="noopener" href="https://blog.csdn.net/liumiaocn/article/details/104110665">BASH脚本基础：环境变量PS2介绍_shell
 ps2是什么-CSDN博客</a>
 <a href="#fnref:9" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:10" class="footnote-text"><span><a
+target="_blank" rel="noopener" href="http://cn.linux.vbird.org/linux_basic/0320bash_1.php">鸟叔的Linux私房菜：基础版</a>
+<a href="#fnref:10" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 </ol>
