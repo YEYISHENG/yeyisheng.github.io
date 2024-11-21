@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art-cla/6.png">
 <meta property="article:published_time" content="2024-11-21T06:29:25.000Z">
-<meta property="article:modified_time" content="2024-11-21T06:38:28.710Z">
+<meta property="article:modified_time" content="2024-11-21T06:42:05.255Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="加法器优化">
 <meta property="article:tag" content="超前进位">
@@ -227,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6k 字
+          6.1k 字
         
       </span>
     
@@ -238,7 +238,7 @@
         
         
         
-          55 分钟
+          56 分钟
         
       </span>
     
@@ -302,8 +302,12 @@
 超前进位加法器的核心思想是并行计算进位位，我们想要超前计算的就是进位信号C，这个思想将会贯彻加法器的设计始终，从最初的4bitCLA到16bitCLA组间进位都体现了这个思想。<br>
 我们先从最简单的一位全加器开始说起，观察普通一位全加器的逻辑表达式：<br>
 <span class="math display">\[
-s=a\oplus b\oplus c \newline
+\left\{
+\begin{array}{l}
+s=a\oplus b\oplus c \\
 c_{out}=ab+c_{in}(a\oplus b)
+\end{array}
+\right.
 \]</span></p>
 <p>其中a与b是两个加数、<span
 class="math inline">\(c_{in}\)</span>是低位进位信号、s是和数、<span
@@ -311,8 +315,12 @@ class="math inline">\(c_{out}\)</span>是高位进位，这里的五个信号都
 Link。我们可以看出，如果将位数从一位扩展到多位，高位进位信号总是依赖低位进位信号的，这就会造成非常可观的延迟，运算速度与进位传递速度有关。于是又引入了数字IC设计中亘古不变的话题，面积与速度的tradeoff，只不过这次我们是用面积换速度，即使用更复杂的电路设计换取更快的运行速度。<br>
 人们开始想办法优化电路结构，提取其共有部分： <span
 class="math display">\[
-P=a\oplus b \newline
+\left\{
+\begin{array}{l}
+P=a\oplus b \\
 G=ab
+\end{array}
+\right.
 \]</span> 这里的a与b是输入的待求和数据，即可以是1bit的也可以是N
 bits的数据。<br>
 于是，对于N位超前进位加法器，进位与求和的逻辑表达式可以重新写成如下形式：<br>
