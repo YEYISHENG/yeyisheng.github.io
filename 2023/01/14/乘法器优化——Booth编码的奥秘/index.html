@@ -16,16 +16,16 @@
   <meta name="author" content="叶逸昇">
   <meta name="keywords" content="">
   
-    <meta name="description" content="引子：乘法器概论 在整个数字集成电路的世界里，乘法器的速度优化是一个亘古不变的话题，因为乘法器是高性能微处理器中的关键部件，是进行高速计算特别是信号处理等方面应用时所必须的。对于现今普遍采用的阵列乘法器（array multiplier），它囊括了以下三个功能：产生部分积、累积部分积与最终相加，所以在进行乘法器速度优化时，我们可以从以下三个方面考虑：  - 加快部分积的产生 - 减少部分积的">
+    <meta name="description" content="引子：乘法器概论 在整个数字集成电路的世界里，乘法器的速度优化是一个亘古不变的话题，因为乘法器是高性能微处理器中的关键部件，是进行高速计算特别是信号处理等方面应用时所必须的。对于现今普遍采用的阵列乘法器（array multiplier），它囊括了以下三个功能：产生部分积、累积部分积与最终相加，所以在进行乘法器速度优化时，我们可以从以下三个方面考虑：   加快部分积的产生 减少部分积的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="乘法器优化——Booth编码的奥秘">
 <meta property="og:url" content="http://example.com/2023/01/14/%E4%B9%98%E6%B3%95%E5%99%A8%E4%BC%98%E5%8C%96%E2%80%94%E2%80%94Booth%E7%BC%96%E7%A0%81%E7%9A%84%E5%A5%A5%E7%A7%98/index.html">
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
-<meta property="og:description" content="引子：乘法器概论 在整个数字集成电路的世界里，乘法器的速度优化是一个亘古不变的话题，因为乘法器是高性能微处理器中的关键部件，是进行高速计算特别是信号处理等方面应用时所必须的。对于现今普遍采用的阵列乘法器（array multiplier），它囊括了以下三个功能：产生部分积、累积部分积与最终相加，所以在进行乘法器速度优化时，我们可以从以下三个方面考虑：  - 加快部分积的产生 - 减少部分积的">
+<meta property="og:description" content="引子：乘法器概论 在整个数字集成电路的世界里，乘法器的速度优化是一个亘古不变的话题，因为乘法器是高性能微处理器中的关键部件，是进行高速计算特别是信号处理等方面应用时所必须的。对于现今普遍采用的阵列乘法器（array multiplier），它囊括了以下三个功能：产生部分积、累积部分积与最终相加，所以在进行乘法器速度优化时，我们可以从以下三个方面考虑：   加快部分积的产生 减少部分积的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/article/art5/6.png">
 <meta property="article:published_time" content="2023-01-14T05:55:49.000Z">
-<meta property="article:modified_time" content="2024-03-07T11:26:20.799Z">
+<meta property="article:modified_time" content="2024-11-21T08:25:25.641Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="乘法器优化">
 <meta property="article:tag" content="Booth编码">
@@ -289,7 +289,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2024年3月7日 晚上
+                    本文最后更新于：2024年11月21日 下午
                   
                 
               </p>
@@ -300,7 +300,12 @@
                 <h2 id="引子乘法器概论">引子：乘法器概论</h2>
 <p>在整个数字集成电路的世界里，乘法器的速度优化是一个亘古不变的话题，因为乘法器是高性能微处理器中的关键部件，是进行高速计算特别是信号处理等方面应用时所必须的。对于现今普遍采用的阵列乘法器（array
 multiplier），它囊括了以下三个功能：产生部分积、累积部分积与最终相加，所以在进行乘法器速度优化时，我们可以从以下三个方面考虑：
-<br> - 加快部分积的产生 - 减少部分积的数 - 加速部分积的加法操作</p>
+<br></p>
+<ul>
+<li>加快部分积的产生</li>
+<li>减少部分积的数</li>
+<li>加速部分积的加法操作</li>
+</ul>
 <figure>
 <img src="/img/article/art5/1.png" srcset="/img/loading2.gif" lazyload alt="图 1 二进制阵列乘法器" />
 <figcaption aria-hidden="true">图 1 二进制阵列乘法器</figcaption>
@@ -341,14 +346,15 @@ Encode），它使部分积的数目至少可以缩减到原来的一半。部�
 class="math display">\[[X]_补=x_s·x_1·x_2···x_n,[Y]_补=y_s·y_1·y_2···y_n\]</span>
 其中<span
 class="math inline">\(x_s,y_s\)</span>均为符号位将符号位参与计算，运算数以补码表示且被乘数与部分积都取双符号位。
-<br> -
-被乘数和部分积均取两位符号位即变形码，乘数取一位符号位，并参与运算 -
-乘数末尾增设附加位<span class="math inline">\(Y_{n+1}\)</span>
+<br></p>
+<ul>
+<li>被乘数和部分积均取两位符号位即变形码，乘数取一位符号位，并参与运算</li>
+<li>乘数末尾增设附加位<span class="math inline">\(Y_{n+1}\)</span>
 ，其初始值为0。 <span class="math inline">\(Y_n\)</span>和<span
-class="math inline">\(Y_{n+1}\)</span>构成各步运算的乘数判断位，按表所示方法进行操作
--
-按补码移位规则：部分积为正(第一符号位为0)，右移时有效位最高位补0；部分积为负，右移时有效位最高位补1
-- 按Booth乘法表算法进行到第n+1步，但第n+1步的部分积不再移位</p>
+class="math inline">\(Y_{n+1}\)</span>构成各步运算的乘数判断位，按表所示方法进行操作</li>
+<li>按补码移位规则：部分积为正(第一符号位为0)，右移时有效位最高位补0；部分积为负，右移时有效位最高位补1</li>
+<li>按Booth乘法表算法进行到第n+1步，但第n+1步的部分积不再移位</li>
+</ul>
 <table align="center" border="2">
 <thead>
 <tr>
