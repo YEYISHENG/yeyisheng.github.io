@@ -23,12 +23,15 @@
 <meta property="og:site_name" content="YeYisheng&#39;s Blog">
 <meta property="og:description" content="如何DIY？  最近在B站上看到很多这种类似的DIY校园卡的项目，觉得很有趣，结果找了半天没找到自己学校的卡片设计，于是我就想着自己上阵弄一个出来。方法与设计都参考了B站的同类视频，如果哪里有不懂的地方都可以去看一看。 我在这里就说一说我遇到的一些问题： 1、获取校园地图元素 首先是关于校园地图元素的设计：那首先你得先搞到自个儿学校的地图，这个应该不用我多说，在官网应该都能找到。就像">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/article/art-pcb/1.png">
+<meta property="og:image" content="http://example.com/img/article/art-pcb/2.png">
 <meta property="article:published_time" content="2024-12-18T12:39:53.000Z">
-<meta property="article:modified_time" content="2024-12-18T12:46:54.054Z">
+<meta property="article:modified_time" content="2024-12-18T13:37:18.288Z">
 <meta property="article:author" content="叶逸昇">
 <meta property="article:tag" content="just for fun">
 <meta property="article:tag" content="PCB">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/article/art-pcb/1.png">
   
   
   
@@ -305,14 +308,10 @@
 <p>2、将其转化为电路</p>
 <p>你可以在PS等软件中把地图按照你喜欢的样式重新绘制出来，然后把它导入为丝印层；也可以像我一样偷个懒，直接利用EDA中的元器件进行绘制，地图里面长得比较规则的图形可以使用EDA中现成的元件例如电阻电容电感、运放、晶振、滑动变阻器等等，遇到不规则的图形比如操场、游泳池或者其他你想DIY的图形（比如你的校园卡芯片的封装），你可以将他们封装为自定义器件。</p>
 <p>具体来说，首先需要新建元件库，然后在元件库中创建元件及其对应的封装，这里我解释一下：元件库里面可以创建很多元件，每一个元件都是放置在电路原理图（Schematic）上的，而与之对应的封装则是实际打板后得到的实物，有点类似于光刻工艺中的掩膜版，你画的是什么形状最后就会得到什么形状。</p>
-<p><img
-src="https://cdn.nlark.com/yuque/0/2024/png/46559304/1734520983110-17334162-0dba-4e5e-8959-b2dc8ebcc7c7.png" srcset="/img/loading2.gif" lazyload /></p>
+<p><img src="/img/article/art-pcb/1.png" srcset="/img/loading2.gif" lazyload /></p>
 <p>具体步骤如下：首先创建元件并绘制形状，什么形状都可以，只要你看的过去就行。</p>
-<p><img
-src="https://cdn.nlark.com/yuque/0/2024/png/46559304/1734521285689-192ba139-16a6-417a-b1e8-2d9de2a7484c.png" srcset="/img/loading2.gif" lazyload
-alt="创建元件" /><img
-src="https://cdn.nlark.com/yuque/0/2024/png/46559304/1734521792550-c616a41e-76c3-47a5-bd3a-dfa181699571.png" srcset="/img/loading2.gif" lazyload
-alt="绘制元件，什么形状都可以" /></p>
+<p><img src="/img/article/art-pcb/2.png" srcset="/img/loading2.gif" lazyload alt="创建元件" /><img
+src="/img/article/art-pcb/3.png" srcset="/img/loading2.gif" lazyload alt="绘制元件，什么形状都可以" /></p>
 <p>接着创建封装并绘制形状，这里的形状与尺寸参数需要仔细斟酌，因为它与你最终打板得到的实物息息相关。</p>
 <p><img
 src="https://cdn.nlark.com/yuque/0/2024/png/46559304/1734521571029-898eeaf6-ae81-4067-a336-30b25a5df4f8.png" srcset="/img/loading2.gif" lazyload
