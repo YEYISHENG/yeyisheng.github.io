@@ -519,7 +519,7 @@ id="a-importdata-pastespecial"><code>A = importdata('-pastespecial')</code></h4>
     Fluid.utils.loadComments('#comments', function() {
       Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.7/twikoo.all.min.js', function() {
         var options = Object.assign(
-          {"envId":"https://yeyisheng.netlify.app","region":"ap-shanghai","path":"window.location.pathname"},
+          {"envId":"https://yeyisheng.netlify.app/.netlify/functions/twikoo","region":"ap-shanghai","path":"window.location.pathname"},
           {
             el: '#twikoo',
             path: 'window.location.pathname',
